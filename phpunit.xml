@@ -10,16 +10,21 @@
          stopOnFailure="false">
     <testsuites>
         <testsuite name="Unit">
-            <directory suffix="Test.php">./tests/Unit</directory>
+            <directory suffix="Test.php">./tests/TrophyForum</directory>
         </testsuite>
 
         <testsuite name="Feature">
-            <directory suffix="Test.php">./tests/Feature</directory>
+            <directory suffix="Test.php">./tests/App</directory>
         </testsuite>
     </testsuites>
     <filter>
         <whitelist processUncoveredFilesFromWhitelist="true">
             <directory suffix=".php">./app</directory>
+            <directory suffix=".php">./src</directory>
+            <exclude>
+                <directory>./src/Shared/Infrastructure</directory>
+                <directory>./src/TrophyForum/SubForums/Infrastructure</directory>
+            </exclude>
         </whitelist>
     </filter>
     <php>

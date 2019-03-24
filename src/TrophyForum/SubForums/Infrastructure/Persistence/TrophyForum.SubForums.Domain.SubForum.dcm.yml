@@ -1,0 +1,20 @@
+TrophyForum\SubForums\Domain\SubForum:
+    type: entity
+    table: sub_forums
+    repositoryClass: TrophyForum\SubForums\Infrastructure\MySqlSubForumRepository
+    id:
+        id:
+            type: sub_forum_id
+            nullable: false
+    fields:
+        name:
+            type: sub_forum_name
+            nullable: false
+        createdAt:
+            type: created_at
+            nullable: false
+            column: created_at
+        updatedAt:
+            type: updated_at
+            nullable: true
+            column: updated_at
