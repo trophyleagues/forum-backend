@@ -13,10 +13,10 @@ final class FindAllSubForumsController extends Controller
 {
     public function __invoke(): JsonResponse
     {
-        $this->bus()->addHandler(FindAllSubForumsQuery::class, FindAllSubForumsQueryHandler::class);
+        $this->bus->addHandler(FindAllSubForumsQuery::class, FindAllSubForumsQueryHandler::class);
 
         return JsonResponse::create(
-            $this->bus()->dispatch(new FindAllSubForumsQuery())
+            $this->bus->dispatch(new FindAllSubForumsQuery())
         );
     }
 }

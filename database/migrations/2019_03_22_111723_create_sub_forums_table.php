@@ -15,7 +15,10 @@ class CreateSubForumsTable extends Migration
     {
         Schema::create('sub_forums', function (Blueprint $table) {
             $table->string('id')->unique();
+            $table->string('author_id');
             $table->string('name');
+            $table->string('description');
+            $table->boolean('is_announce');
             $table->timestamps();
         });
     }

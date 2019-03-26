@@ -1,0 +1,45 @@
+TrophyForum\Posts\Domain\Post:
+    type: entity
+    table: posts
+    repositoryClass: TrophyForum\Posts\Infrastructure\MySqlPostRepository
+    id:
+        id:
+            type: post_id
+            nullable: false
+    fields:
+        title:
+            type: title
+            nullable: false
+        content:
+            type: content
+            nullable: false
+        isOpen:
+            type: post_is_open
+            nullable: false
+            default: true
+        slug:
+            type: slug
+            nullable: false
+        createdAt:
+            type: created_at
+            nullable: false
+            column: created_at
+        updatedAt:
+            type: updated_at
+            nullable: true
+            column: updated_at
+    manyToOne:
+         sub_forum:
+             targetEntity: TrophyForum\SubForums\Domain\SubForum
+             mappedBy: sub_forum
+             joinColumn:
+                 name: sub_forum_id
+                 referencedColumnName: id
+             cascade: ["persist" ,"merge", "refresh"]
+         author:
+             targetEntity: TrophyForum\Authors\Domain\Author
+             mappedBy: author
+             joinColumn:
+                 name: author_id
+                 referencedColumnName: id
+             cascade: ["persist" ,"merge", "refresh"]

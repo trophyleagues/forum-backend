@@ -4,6 +4,7 @@ declare(strict_types = 1);
 
 namespace TrophyForum\SubForums\Application\Find;
 
+use TrophyForum\Posts\Domain\PostRepository;
 use TrophyForum\SubForums\Domain\SubForum;
 use TrophyForum\SubForums\Domain\SubForumId;
 use TrophyForum\SubForums\Domain\SubForumNotExist;
@@ -12,10 +13,12 @@ use TrophyForum\SubForums\Domain\SubForumRepository;
 final class SubForumsFinder
 {
     private $repository;
+    private $postRepository;
 
-    public function __construct(SubForumRepository $repository)
+    public function __construct(SubForumRepository $repository, PostRepository $postRepository)
     {
-        $this->repository = $repository;
+        $this->repository     = $repository;
+        $this->postRepository = $postRepository;
     }
 
     public function __invoke(SubForumId $id): SubForum

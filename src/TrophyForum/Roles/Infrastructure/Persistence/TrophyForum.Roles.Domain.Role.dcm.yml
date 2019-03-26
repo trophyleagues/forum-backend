@@ -1,0 +1,20 @@
+TrophyForum\Roles\Domain\Role:
+    type: entity
+    table: roles
+    repositoryClass: TrophyForum\Roles\Infrastructure\MySqlRoleRepository
+    id:
+        id:
+            type: role_id
+            nullable: false
+    fields:
+        name:
+            type: role_name
+            nullable: false
+    manyToOne:
+         author:
+             targetEntity: TrophyForum\Authors\Domain\Author
+             mappedBy: author
+             joinColumn:
+                 name: author_id
+                 referencedColumnName: id
+             cascade: ["persist" ,"merge", "refresh"]

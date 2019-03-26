@@ -29,6 +29,10 @@ return [
 
             ],
             'paths'         => [
+                base_path('src/TrophyForum/Authors/Infrastructure/Persistence/'),
+                base_path('src/TrophyForum/Posts/Infrastructure/Persistence/'),
+                base_path('src/TrophyForum/Responses/Infrastructure/Persistence/'),
+                base_path('src/TrophyForum/Roles/Infrastructure/Persistence/'),
                 base_path('src/TrophyForum/SubForums/Infrastructure/Persistence/'),
             ],
             'repository'    => Doctrine\ORM\EntityRepository::class,
@@ -113,10 +117,27 @@ return [
         'json'              => LaravelDoctrine\ORM\Types\Json::class,
         'DateTimeImmutable' => \Shared\Infrastructure\Doctrine\Types\DoctrineDateTimeImmutable::class,
 
-        'sub_forum_id'   => \TrophyForum\SubForums\Infrastructure\Persistence\SubForumIdType::class,
-        'sub_forum_name' => \TrophyForum\SubForums\Infrastructure\Persistence\SubForumNameType::class,
+        'author_id'     => \TrophyForum\Authors\Infrastructure\Persistence\AuthorIdType::class,
+        'author_name'   => \TrophyForum\Authors\Infrastructure\Persistence\AuthorNameType::class,
+        'author_avatar' => \TrophyForum\Authors\Infrastructure\Persistence\AuthorAvatarType::class,
 
+        'post_id'      => \TrophyForum\Posts\Infrastructure\Persistence\PostIdType::class,
+        'post_is_open' => \TrophyForum\Posts\Infrastructure\Persistence\PostIsOpenType::class,
+
+        'sub_forum_id'          => \TrophyForum\SubForums\Infrastructure\Persistence\SubForumIdType::class,
+        'sub_forum_name'        => \TrophyForum\SubForums\Infrastructure\Persistence\SubForumNameType::class,
+        'sub_forum_description' => \TrophyForum\SubForums\Infrastructure\Persistence\SubForumDescriptionType::class,
+        'sub_forum_is_announce' => \TrophyForum\SubForums\Infrastructure\Persistence\SubForumIsAnnounceType::class,
+
+        'response_id' => \TrophyForum\Responses\Infrastructure\Persistence\ResponseIdType::class,
+
+        'role_id'   => \TrophyForum\Roles\Infrastructure\Persistence\RoleIdType::class,
+        'role_name' => \TrophyForum\Roles\Infrastructure\Persistence\RoleNameType::class,
+
+        'content'    => \Shared\Infrastructure\Persistence\ContentType::class,
         'created_at' => \Shared\Infrastructure\Persistence\CreatedAtType::class,
+        'slug'       => \Shared\Infrastructure\Persistence\SlugType::class,
+        'title'      => \Shared\Infrastructure\Persistence\TitleType::class,
         'updated_at' => \Shared\Infrastructure\Persistence\UpdatedAtType::class,
     ],
     /*

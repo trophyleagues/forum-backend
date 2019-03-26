@@ -10,6 +10,12 @@ TrophyForum\SubForums\Domain\SubForum:
         name:
             type: sub_forum_name
             nullable: false
+        description:
+            type: sub_forum_description
+            nullable: false
+        isAnnounce:
+            type: sub_forum_is_announce
+            nullable: false
         createdAt:
             type: created_at
             nullable: false
@@ -18,3 +24,23 @@ TrophyForum\SubForums\Domain\SubForum:
             type: updated_at
             nullable: true
             column: updated_at
+    manyToOne:
+         author:
+             targetEntity: TrophyForum\Authors\Domain\Author
+             mappedBy: author
+             joinColumn:
+                 name: author_id
+                 referencedColumnName: id
+             cascade: ["persist" ,"merge", "refresh"]
+    manyToMany:
+          roles:
+              targetEntity: TrophyForum\Roles\Domain\Role
+              joinTable:
+                  name: sub_forum_roles
+                  joinColumns:
+                      sub_forum_id:
+                          referencedColumnName: id
+                  inverseJoinColumns:
+                      role_id:
+                          referencedColumnName: id
+                          unique: true

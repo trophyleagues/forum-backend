@@ -16,7 +16,17 @@ final class SubForumTest extends TestCase
     {
         $stub = SubForumStub::random();
 
-        $subForum = new SubForum($stub->id(), $stub->name(), $stub->createdAt(), $stub->updatedAt());
+        $subForum = new SubForum(
+            $stub->id(),
+            $stub->author(),
+            $stub->name(),
+            $stub->description(),
+            $stub->isAnnounce(),
+            $stub->totalPosts(),
+            $stub->roles(),
+            $stub->createdAt(),
+            $stub->updatedAt()
+        );
 
         $this->assertSame($stub->id()->value(), $subForum->id()->value());
         $this->assertSame($stub->name()->value(), $subForum->name()->value());
@@ -29,7 +39,15 @@ final class SubForumTest extends TestCase
     {
         $stub = SubForumStub::random();
 
-        $subForum = SubForum::create($stub->id(), $stub->name());
+        $subForum = SubForum::create(
+            $stub->id(),
+            $stub->author(),
+            $stub->name(),
+            $stub->description(),
+            $stub->isAnnounce(),
+            $stub->totalPosts(),
+            $stub->roles()
+        );
 
         $this->assertSame($stub->id()->value(), $subForum->id()->value());
         $this->assertSame($stub->name()->value(), $subForum->name()->value());

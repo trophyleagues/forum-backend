@@ -1,0 +1,15 @@
+TrophyForum\Authors\Domain\Author:
+    type: entity
+    table: authors
+    repositoryClass: TrophyForum\Authors\Infrastructure\MySqlAuthorRepository
+    id:
+        id:
+            type: author_id
+            nullable: false
+    fields:
+        name:
+            type: author_name
+            nullable: false
+        avatar:
+            type: author_avatar
+            nullable: false

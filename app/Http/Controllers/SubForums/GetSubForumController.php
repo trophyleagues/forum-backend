@@ -15,10 +15,10 @@ final class GetSubForumController extends Controller
     public function __invoke(string $subForumId): JsonResponse
     {
         try {
-            $this->bus()->addHandler(FindSubForumQuery::class, FindSubForumQueryHandler::class);
+            $this->bus->addHandler(FindSubForumQuery::class, FindSubForumQueryHandler::class);
 
             return JsonResponse::create(
-                $this->bus()->dispatch(new FindSubForumQuery($subForumId))
+                $this->bus->dispatch(new FindSubForumQuery($subForumId))
             );
         } catch (SubForumNotExist $e) {
             return JsonResponse::create(['message' => $e->getMessage()], 404);

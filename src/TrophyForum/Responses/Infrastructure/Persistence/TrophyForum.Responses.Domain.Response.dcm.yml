@@ -1,0 +1,35 @@
+TrophyForum\Responses\Domain\Response:
+    type: entity
+    table: responses
+    repositoryClass: TrophyForum\Responses\Infrastructure\MySqlResponseRepository
+    id:
+        id:
+            type: response_id
+            nullable: false
+    fields:
+        content:
+            type: content
+            nullable: false
+        createdAt:
+            type: created_at
+            nullable: false
+            column: created_at
+        updatedAt:
+            type: updated_at
+            nullable: true
+            column: updated_at
+    manyToOne:
+         post:
+             targetEntity: TrophyForum\Posts\Domain\Post
+             mappedBy: post
+             joinColumn:
+                 name: post_id
+                 referencedColumnName: id
+             cascade: ["persist" ,"merge", "refresh"]
+         author:
+             targetEntity: TrophyForum\Authors\Domain\Author
+             mappedBy: author
+             joinColumn:
+                 name: author_id
+                 referencedColumnName: id
+             cascade: ["persist" ,"merge", "refresh"]
