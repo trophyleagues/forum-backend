@@ -25,6 +25,11 @@ final class InMemorySubForumRepository implements SubForumRepository
 
     public function bySubForumId(SubForumId $id): SubForum
     {
-        // @todo Implement the awesome bySubForumId() method!!!
+        return isset($_SESSION['sub_forums'][$id->value()]) ? $_SESSION['sub_forums'][$id->value()] : null;
+    }
+
+    public function save(SubForum $subForum): void
+    {
+        $_SESSION['sub_forums'][$subForum->id()->value()] = $subForum;
     }
 }

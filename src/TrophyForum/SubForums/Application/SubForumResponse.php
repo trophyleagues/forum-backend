@@ -8,7 +8,7 @@ use TrophyForum\SubForums\Domain\SubForum;
 
 final class SubForumResponse
 {
-    public static function response(SubForum $subForum): array
+    public function __invoke(SubForum $subForum): array
     {
         return [
             'id'         => $subForum->id()->value(),

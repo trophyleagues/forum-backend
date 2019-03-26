@@ -8,12 +8,12 @@ use TrophyForum\SubForums\Domain\SubForums;
 
 final class SubForumsResponse
 {
-    public static function response(SubForums $subForums): array
+    public function __invoke(SubForums $subForums): array
     {
         $response = [];
 
         foreach ($subForums as $subForum) {
-            $response[] = SubForumResponse::response($subForum);
+            $response[] = (new SubForumResponse())->__invoke($subForum);
         }
 
         return $response;

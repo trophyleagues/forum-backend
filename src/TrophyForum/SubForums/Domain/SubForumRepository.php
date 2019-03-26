@@ -8,5 +8,5 @@ interface SubForumRepository
 {
     public function all(): SubForums;
 
-    public function bySubForumId(SubForumId $id): SubForum;
+    public function bySubForumId(SubForumId $id): ?SubForum;
 }

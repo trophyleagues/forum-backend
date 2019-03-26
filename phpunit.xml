@@ -21,10 +21,6 @@
         <whitelist processUncoveredFilesFromWhitelist="true">
             <directory suffix=".php">./app</directory>
             <directory suffix=".php">./src</directory>
-            <exclude>
-                <directory>./src/Shared/Infrastructure</directory>
-                <directory>./src/TrophyForum/SubForums/Infrastructure</directory>
-            </exclude>
         </whitelist>
     </filter>
     <php>

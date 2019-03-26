@@ -17,8 +17,11 @@ final class MySqlSubForumRepository extends EntityRepository implements SubForum
         return new SubForums($this->findAll());
     }
 
-    public function bySubForumId(SubForumId $id): SubForum
+    public function bySubForumId(SubForumId $id): ?SubForum
     {
-        // @todo Implement the awesome bySubForumId() method!!!
+        /** @var SubForum $subForum */
+        $subForum = $this->findOneBy(['id' => $id->value()]);
+
+        return $subForum;
     }
 }

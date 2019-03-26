@@ -6,7 +6,7 @@ namespace TrophyForum\SubForums\Application\FindAll;
 
 use function Lambdish\Phunctional\apply;
 use function Lambdish\Phunctional\pipe;
-use TrophyForum\SubForums\Domain\SubForumsResponse;
+use TrophyForum\SubForums\Application\SubForumsResponse;
 
 final class FindAllSubForumsQueryHandler
 {
@@ -14,7 +14,7 @@ final class FindAllSubForumsQueryHandler
 
     public function __construct(AllSubForumsFinder $finder)
     {
-        $this->finder = pipe($finder, new AllSubForumsResponseConverter());
+        $this->finder = pipe($finder, new SubForumsResponse());
     }
 
     public function handle(FindAllSubForumsQuery $query): array
