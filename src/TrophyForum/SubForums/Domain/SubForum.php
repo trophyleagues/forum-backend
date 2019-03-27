@@ -111,8 +111,8 @@ class SubForum
         return $this->updatedAt;
     }
 
-    public function increaseTotalPosts(): void
+    public function modifyTotalPosts(int $totalPosts): void
     {
-        $this->totalPosts = $this->totalPosts->increase();
+        $this->totalPosts = $this->totalPosts()->modify($totalPosts);
     }
 }

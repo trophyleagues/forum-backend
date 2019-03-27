@@ -29,7 +29,7 @@ TrophyForum\Posts\Domain\Post:
             nullable: true
             column: updated_at
     manyToOne:
-         sub_forum:
+         subForum:
              targetEntity: TrophyForum\SubForums\Domain\SubForum
              mappedBy: sub_forum
              joinColumn:

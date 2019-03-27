@@ -64,10 +64,10 @@ class Post extends \TrophyForum\Posts\Domain\Post implements \Doctrine\ORM\Proxy
     public function __sleep()
     {
         if ($this->__isInitialized__) {
-            return ['__isInitialized__', '' . "\0" . 'TrophyForum\\Posts\\Domain\\Post' . "\0" . 'id', '' . "\0" . 'TrophyForum\\Posts\\Domain\\Post' . "\0" . 'title', '' . "\0" . 'TrophyForum\\Posts\\Domain\\Post' . "\0" . 'content', '' . "\0" . 'TrophyForum\\Posts\\Domain\\Post' . "\0" . 'author', '' . "\0" . 'TrophyForum\\Posts\\Domain\\Post' . "\0" . 'isOpen', '' . "\0" . 'TrophyForum\\Posts\\Domain\\Post' . "\0" . 'responses', '' . "\0" . 'TrophyForum\\Posts\\Domain\\Post' . "\0" . 'slug', '' . "\0" . 'TrophyForum\\Posts\\Domain\\Post' . "\0" . 'createdAt', '' . "\0" . 'TrophyForum\\Posts\\Domain\\Post' . "\0" . 'updatedAt'];
+            return ['__isInitialized__', '' . "\0" . 'TrophyForum\\Posts\\Domain\\Post' . "\0" . 'id', '' . "\0" . 'TrophyForum\\Posts\\Domain\\Post' . "\0" . 'subForum', '' . "\0" . 'TrophyForum\\Posts\\Domain\\Post' . "\0" . 'author', '' . "\0" . 'TrophyForum\\Posts\\Domain\\Post' . "\0" . 'title', '' . "\0" . 'TrophyForum\\Posts\\Domain\\Post' . "\0" . 'content', '' . "\0" . 'TrophyForum\\Posts\\Domain\\Post' . "\0" . 'isOpen', '' . "\0" . 'TrophyForum\\Posts\\Domain\\Post' . "\0" . 'responses', '' . "\0" . 'TrophyForum\\Posts\\Domain\\Post' . "\0" . 'slug', '' . "\0" . 'TrophyForum\\Posts\\Domain\\Post' . "\0" . 'createdAt', '' . "\0" . 'TrophyForum\\Posts\\Domain\\Post' . "\0" . 'updatedAt'];
         }
 
-        return ['__isInitialized__', '' . "\0" . 'TrophyForum\\Posts\\Domain\\Post' . "\0" . 'id', '' . "\0" . 'TrophyForum\\Posts\\Domain\\Post' . "\0" . 'title', '' . "\0" . 'TrophyForum\\Posts\\Domain\\Post' . "\0" . 'content', '' . "\0" . 'TrophyForum\\Posts\\Domain\\Post' . "\0" . 'author', '' . "\0" . 'TrophyForum\\Posts\\Domain\\Post' . "\0" . 'isOpen', '' . "\0" . 'TrophyForum\\Posts\\Domain\\Post' . "\0" . 'responses', '' . "\0" . 'TrophyForum\\Posts\\Domain\\Post' . "\0" . 'slug', '' . "\0" . 'TrophyForum\\Posts\\Domain\\Post' . "\0" . 'createdAt', '' . "\0" . 'TrophyForum\\Posts\\Domain\\Post' . "\0" . 'updatedAt'];
+        return ['__isInitialized__', '' . "\0" . 'TrophyForum\\Posts\\Domain\\Post' . "\0" . 'id', '' . "\0" . 'TrophyForum\\Posts\\Domain\\Post' . "\0" . 'subForum', '' . "\0" . 'TrophyForum\\Posts\\Domain\\Post' . "\0" . 'author', '' . "\0" . 'TrophyForum\\Posts\\Domain\\Post' . "\0" . 'title', '' . "\0" . 'TrophyForum\\Posts\\Domain\\Post' . "\0" . 'content', '' . "\0" . 'TrophyForum\\Posts\\Domain\\Post' . "\0" . 'isOpen', '' . "\0" . 'TrophyForum\\Posts\\Domain\\Post' . "\0" . 'responses', '' . "\0" . 'TrophyForum\\Posts\\Domain\\Post' . "\0" . 'slug', '' . "\0" . 'TrophyForum\\Posts\\Domain\\Post' . "\0" . 'createdAt', '' . "\0" . 'TrophyForum\\Posts\\Domain\\Post' . "\0" . 'updatedAt'];
     }
 
     /**
@@ -187,6 +187,28 @@ class Post extends \TrophyForum\Posts\Domain\Post implements \Doctrine\ORM\Proxy
     /**
      * {@inheritDoc}
      */
+    public function subForum(): \TrophyForum\SubForums\Domain\SubForum
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'subForum', []);
+
+        return parent::subForum();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function author(): \TrophyForum\Authors\Domain\Author
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'author', []);
+
+        return parent::author();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
     public function title(): \Shared\Domain\ValueObject\Title
     {
 
@@ -204,17 +226,6 @@ class Post extends \TrophyForum\Posts\Domain\Post implements \Doctrine\ORM\Proxy
         $this->__initializer__ && $this->__initializer__->__invoke($this, 'content', []);
 
         return parent::content();
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    public function author(): \TrophyForum\Authors\Domain\Author
-    {
-
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'author', []);
-
-        return parent::author();
     }
 
     /**
@@ -270,6 +281,17 @@ class Post extends \TrophyForum\Posts\Domain\Post implements \Doctrine\ORM\Proxy
         $this->__initializer__ && $this->__initializer__->__invoke($this, 'updatedAt', []);
 
         return parent::updatedAt();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function addResponses(\TrophyForum\Responses\Domain\Responses $responses): void
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'addResponses', [$responses]);
+
+        parent::addResponses($responses);
     }
 
 }

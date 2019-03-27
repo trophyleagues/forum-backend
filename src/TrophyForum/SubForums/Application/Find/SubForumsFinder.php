@@ -29,6 +29,10 @@ final class SubForumsFinder
             throw new SubForumNotExist(sprintf('The subForum <%s> does not exists', $id->value()));
         }
 
+        $posts = $this->postRepository->bySubForumId($subForum->id());
+
+        $subForum->modifyTotalPosts($posts);
+
         return $subForum;
     }
 }

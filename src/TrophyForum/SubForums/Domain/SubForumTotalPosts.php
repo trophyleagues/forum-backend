@@ -8,8 +8,8 @@ use Shared\Domain\ValueObject\IntValueObject;
 
 final class SubForumTotalPosts extends IntValueObject
 {
-    public function increase(): self
+    public function modify(int $value): self
     {
-        return new self($this->value() + 1);
+        return new self($value);
     }
 }

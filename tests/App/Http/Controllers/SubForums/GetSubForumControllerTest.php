@@ -2,11 +2,10 @@
 
 namespace Tests\App\Http\Controllers\SubForums;
 
+use App\Models\Author;
 use App\Models\SubForum;
 use Tests\TestCase;
 use Tests\TrophyForum\SubForums\Domain\SubForumIdStub;
-use Tests\TrophyForum\SubForums\Domain\SubForumStub;
-use Tests\TrophyForum\SubForums\Infrastructure\InMemorySubForumRepository;
 
 class GetSubForumControllerTest extends TestCase
 {
@@ -18,6 +17,11 @@ class GetSubForumControllerTest extends TestCase
     public function testBasicTest()
     {
         $subForum = factory(SubForum::class)->make();
+
+        $author = factory(Author::class)->make();
+        $author->save();
+
+        $subForum->author_id = $author->id;
         $subForum->save();
 
         $response = $this->get('/api/v1/forum/' . $subForum->id);
