@@ -15,35 +15,55 @@ use Tests\Shared\Domain\ValueObject\SlugStub;
 use Tests\Shared\Domain\ValueObject\TitleStub;
 use Tests\Shared\Domain\ValueObject\UpdatedAtStub;
 use Tests\TrophyForum\Authors\Domain\AuthorStub;
+use Tests\TrophyForum\SubForums\Domain\SubForumStub;
 use TrophyForum\Authors\Domain\Author;
 use TrophyForum\Posts\Domain\Post;
 use TrophyForum\Posts\Domain\PostId;
 use TrophyForum\Posts\Domain\PostIsOpen;
 use TrophyForum\Responses\Domain\Responses;
+use TrophyForum\SubForums\Domain\SubForum;
 
 final class PostStub
 {
     public static function create(
         PostId $id,
+        SubForum $subForum,
+        Author $author,
         Title $title,
         Content $content,
-        Author $author,
         PostIsOpen $isOpen,
         Responses $responses,
         Slug $slug,
         CreatedAt $createdAt,
         UpdatedAt $updatedAt
-    ) {
-        return new Post($id, $title, $content, $author, $isOpen, $responses, $slug, $createdAt, $updatedAt);
+    ): Post {
+        return new Post($id, $subForum, $author, $title, $content, $isOpen, $responses, $slug, $createdAt, $updatedAt);
     }
 
-    public static function random()
+    public static function withId(PostId $id): Post
+    {
+        return self::create(
+            $id,
+            SubForumStub::random(),
+            AuthorStub::random(),
+            TitleStub::random(),
+            ContentStub::random(),
+            PostIsOpenStub::random(),
+            new Responses([]),
+            SlugStub::random(),
+            CreatedAtStub::random(),
+            UpdatedAtStub::random()
+        );
+    }
+
+    public static function random(): Post
     {
         return self::create(
             PostIdStub::random(),
+            SubForumStub::random(),
+            AuthorStub::random(),
             TitleStub::random(),
             ContentStub::random(),
-            AuthorStub::random(),
             PostIsOpenStub::random(),
             new Responses([]),
             SlugStub::random(),

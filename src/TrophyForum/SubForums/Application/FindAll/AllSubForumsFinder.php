@@ -26,7 +26,7 @@ final class AllSubForumsFinder
         foreach ($subForums as $subForum) {
             $posts = $this->postRepository->bySubForumId($subForum->id());
 
-            $subForum->modifyTotalPosts($posts);
+            $subForum->modifyTotalPosts(null === $posts ? 0 : count($posts));
         }
 
         return $subForums;

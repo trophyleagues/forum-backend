@@ -10,5 +10,5 @@ interface PostRepository
 {
     public function byId(PostId $id): ?Post;
 
-    public function bySubForumId(SubForumId $subForumId): int;
+    public function bySubForumId(SubForumId $subForumId): ?Posts;
 }

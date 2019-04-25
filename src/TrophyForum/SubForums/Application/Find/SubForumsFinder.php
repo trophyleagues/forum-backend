@@ -31,7 +31,7 @@ final class SubForumsFinder
 
         $posts = $this->postRepository->bySubForumId($subForum->id());
 
-        $subForum->modifyTotalPosts($posts);
+        $subForum->modifyTotalPosts(null === $posts ? 0 : count($posts));
 
         return $subForum;
     }

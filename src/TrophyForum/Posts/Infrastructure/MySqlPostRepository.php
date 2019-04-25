@@ -8,6 +8,7 @@ use Doctrine\ORM\EntityRepository;
 use TrophyForum\Posts\Domain\Post;
 use TrophyForum\Posts\Domain\PostId;
 use TrophyForum\Posts\Domain\PostRepository;
+use TrophyForum\Posts\Domain\Posts;
 use TrophyForum\SubForums\Domain\SubForumId;
 
 final class MySqlPostRepository extends EntityRepository implements PostRepository
@@ -20,10 +21,10 @@ final class MySqlPostRepository extends EntityRepository implements PostReposito
         return $post;
     }
 
-    public function bySubForumId(SubForumId $subForumId): int
+    public function bySubForumId(SubForumId $subForumId): ?Posts
     {
         $posts = $this->findBy(['subForum' => $subForumId->value()]);
 
-        return count($posts);
+        return null === $posts ? null : new Posts($posts);
     }
 }
