@@ -8,7 +8,6 @@ use Doctrine\ORM\PersistentCollection;
 use Shared\Domain\ValueObject\CreatedAt;
 use Shared\Domain\ValueObject\UpdatedAt;
 use TrophyForum\Authors\Domain\Author;
-use TrophyForum\Roles\Domain\Roles;
 
 class SubForum
 {
@@ -18,6 +17,7 @@ class SubForum
     private $description;
     private $isAnnounce;
     private $totalPosts;
+    private $posts;
     private $roles;
     private $createdAt;
     private $updatedAt;
@@ -29,6 +29,7 @@ class SubForum
         SubForumDescription $description,
         SubForumIsAnnounce $isAnnounce,
         SubForumTotalPosts $totalPosts,
+        PersistentCollection $posts = null,
         PersistentCollection $roles = null,
         CreatedAt $createdAt,
         UpdatedAt $updatedAt
@@ -39,6 +40,7 @@ class SubForum
         $this->description = $description;
         $this->isAnnounce  = $isAnnounce;
         $this->totalPosts  = $totalPosts;
+        $this->posts       = $posts;
         $this->roles       = $roles;
         $this->createdAt   = $createdAt;
         $this->updatedAt   = $updatedAt;
@@ -51,6 +53,7 @@ class SubForum
         SubForumDescription $description,
         SubForumIsAnnounce $isAnnounce,
         SubForumTotalPosts $totalPosts,
+        PersistentCollection $posts = null,
         PersistentCollection $roles = null
     ): self {
         return new self(
@@ -60,6 +63,7 @@ class SubForum
             $description,
             $isAnnounce,
             new SubForumTotalPosts(0),
+            $posts,
             $roles,
             new CreatedAt(new \DateTime()),
             new UpdatedAt(new \DateTime())
@@ -94,6 +98,11 @@ class SubForum
     public function totalPosts(): SubForumTotalPosts
     {
         return null === $this->totalPosts ? new SubForumTotalPosts(0) : $this->totalPosts;
+    }
+
+    public function posts(): ?PersistentCollection
+    {
+        return $this->posts;
     }
 
     public function roles(): ?PersistentCollection

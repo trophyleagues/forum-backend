@@ -32,6 +32,12 @@ TrophyForum\SubForums\Domain\SubForum:
                  name: author_id
                  referencedColumnName: id
              cascade: ["persist" ,"merge", "refresh"]
+    oneToMany:
+         posts:
+             targetEntity: TrophyForum\Posts\Domain\Post
+             cascade: [ "persist", "refresh", "merge" ]
+             mappedBy: subForum
+             orderBy: { 'createdAt': 'DESC' }
     manyToMany:
           roles:
               targetEntity: TrophyForum\Roles\Domain\Role

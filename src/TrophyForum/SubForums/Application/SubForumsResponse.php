@@ -13,7 +13,10 @@ final class SubForumsResponse
         $response = [];
 
         foreach ($subForums as $subForum) {
-            $response[] = (new SubForumResponse())->__invoke($subForum);
+            $subForumResponse = (new SubForumResponse())->__invoke($subForum);
+            unset($subForumResponse['posts']);
+
+            $response[] = $subForumResponse;
         }
 
         return $response;
