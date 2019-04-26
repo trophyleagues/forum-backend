@@ -23,6 +23,7 @@ final class SubForumTest extends TestCase
             $stub->description(),
             $stub->isAnnounce(),
             $stub->totalPosts(),
+            $stub->posts(),
             $stub->roles(),
             $stub->createdAt(),
             $stub->updatedAt()
@@ -46,6 +47,7 @@ final class SubForumTest extends TestCase
             $stub->description(),
             $stub->isAnnounce(),
             $stub->totalPosts(),
+            $stub->posts(),
             $stub->roles()
         );
 
