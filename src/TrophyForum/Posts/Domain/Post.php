@@ -4,13 +4,13 @@ declare(strict_types = 1);
 
 namespace TrophyForum\Posts\Domain;
 
+use Doctrine\ORM\PersistentCollection;
 use Shared\Domain\ValueObject\Content;
 use Shared\Domain\ValueObject\CreatedAt;
 use Shared\Domain\ValueObject\Slug;
 use Shared\Domain\ValueObject\Title;
 use Shared\Domain\ValueObject\UpdatedAt;
 use TrophyForum\Authors\Domain\Author;
-use TrophyForum\Responses\Domain\Responses;
 use TrophyForum\SubForums\Domain\SubForum;
 
 class Post
@@ -33,7 +33,7 @@ class Post
         Title $title,
         Content $content,
         PostIsOpen $isOpen,
-        Responses $responses,
+        PersistentCollection $responses = null,
         Slug $slug,
         CreatedAt $createdAt,
         UpdatedAt $updatedAt
@@ -80,7 +80,7 @@ class Post
         return $this->isOpen;
     }
 
-    public function responses(): ?Responses
+    public function responses(): ?PersistentCollection
     {
         return $this->responses;
     }
@@ -98,10 +98,5 @@ class Post
     public function updatedAt(): UpdatedAt
     {
         return $this->updatedAt;
-    }
-
-    public function addResponses(Responses $responses): void
-    {
-        $this->responses = $responses;
     }
 }

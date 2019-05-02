@@ -29,12 +29,6 @@ final class PostFinder
             throw new PostNotExist(sprintf('The post <%s> does not exists', $id->value()));
         }
 
-        $responses = $this->responseRepository->byPostId($post->id());
-
-        if (null !== $responses) {
-            $post->addResponses($responses);
-        }
-
         return $post;
     }
 }

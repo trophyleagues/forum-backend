@@ -4,6 +4,7 @@ declare(strict_types = 1);
 
 namespace Tests\TrophyForum\Posts\Domain;
 
+use Doctrine\ORM\PersistentCollection;
 use Shared\Domain\ValueObject\Content;
 use Shared\Domain\ValueObject\CreatedAt;
 use Shared\Domain\ValueObject\Slug;
@@ -32,7 +33,7 @@ final class PostStub
         Title $title,
         Content $content,
         PostIsOpen $isOpen,
-        Responses $responses,
+        PersistentCollection $responses = null,
         Slug $slug,
         CreatedAt $createdAt,
         UpdatedAt $updatedAt
@@ -49,7 +50,7 @@ final class PostStub
             TitleStub::random(),
             ContentStub::random(),
             PostIsOpenStub::random(),
-            new Responses([]),
+            null,
             SlugStub::random(),
             CreatedAtStub::random(),
             UpdatedAtStub::random()
@@ -65,7 +66,7 @@ final class PostStub
             TitleStub::random(),
             ContentStub::random(),
             PostIsOpenStub::random(),
-            new Responses([]),
+            null,
             SlugStub::random(),
             CreatedAtStub::random(),
             UpdatedAtStub::random()

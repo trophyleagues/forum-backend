@@ -43,3 +43,9 @@ TrophyForum\Posts\Domain\Post:
                  name: author_id
                  referencedColumnName: id
              cascade: ["persist" ,"merge", "refresh"]
+    oneToMany:
+         responses:
+             targetEntity: TrophyForum\Responses\Domain\Response
+             cascade: [ "persist", "refresh", "merge" ]
+             mappedBy: post
+             orderBy: { 'createdAt': 'DESC' }

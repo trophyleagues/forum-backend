@@ -26,7 +26,7 @@ class FindAllSubForumsControllerTest extends TestCase
         $subForum->author_id = $author->id;
         $subForum->save();
 
-        $response = $this->get('/api/v1/forum');
+        $response = $this->get('/api/v1/forums');
 
         $response->assertStatus(200);
     }

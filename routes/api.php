@@ -11,7 +11,7 @@
 |
 */
 
-Route::get('/v1/forum', 'SubForums\FindAllSubForumsController');
+Route::get('/v1/forums', 'SubForums\FindAllSubForumsController');
 Route::get('/v1/forum/{subForumId}', 'SubForums\GetSubForumController');
 
 Route::get('/v1/post/{postId}', 'Posts\GetPostController');

@@ -5,8 +5,6 @@ declare(strict_types = 1);
 namespace Tests\TrophyForum\Posts\Domain;
 
 use Tests\TestCase;
-use Tests\TrophyForum\Authors\Domain\AuthorStub;
-use Tests\TrophyForum\Responses\Domain\ResponsesStub;
 use TrophyForum\Posts\Domain\Post;
 
 final class PostTest extends TestCase
@@ -39,21 +37,5 @@ final class PostTest extends TestCase
         $this->assertSame($stub->slug()->value(), $post->slug()->value());
         $this->assertSame($stub->createdAt()->value(), $post->createdAt()->value());
         $this->assertSame($stub->updatedAt()->value(), $post->updatedAt()->value());
-    }
-
-    /** @test */
-    function try_add_responses()
-    {
-        $post = PostStub::random();
-        $author = AuthorStub::random();
-
-        $responses = ResponsesStub::random(
-            $post,
-            $author
-        );
-
-        $post->addResponses($responses);
-
-        $this->assertSame($responses, $post->responses());
     }
 }

@@ -17,7 +17,10 @@ final class PostsResponse
         }
 
         foreach ($posts as $post) {
-            $response[] = (new PostResponse())->__invoke($post);
+            $postResponse = (new PostResponse())->__invoke($post);
+            unset($postResponse['responses']);
+
+            $response[] = $postResponse;
         }
 
         return $response;
