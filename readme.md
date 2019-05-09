@@ -3,14 +3,15 @@ Backend in PHP using Laravel. Hexagonal Architecture and Domain-Driven Design (D
 
 ## Table of Contents
 
-* [Installation](#Installation)
-* [Getting started](#Getting%20started)
-* [Services](#Services)
-  * [Get all subForums](#Get%20all%20subForums)
-  * [Get a subForum by subForumId](#Get%20a%20subForum%20by%20subForumId)
-  * [Get a post by postId.](#Get%20a%20post%20by%20postId)
+* [Installation](##Installation)
+* [Getting started](##Getting%20started)
+* [Services](##Services)
+  * [Get all subForums](###Get%20all%20subForums)
+  * [Get a subForum by subForumId](###Get%20a%20subForum%20by%20subForumId)
+  * [Get a post by postId](###Get%20a%20post%20by%20postId)
+  * [Create a post](###Create%20a%20post)
 
-## Installation
+##Installation
 
 - Copy the `.env.example` file to a local `.env` and ensure all the settings are correct for their local environment, filling the secret keys or providing their own values when is necessary.
 
@@ -31,7 +32,7 @@ $ touch database/database.sqlite
 $ php artisan migrate:install
 ```
 
-## Getting started
+##Getting started
 
 - Seed the database with records
 
@@ -56,15 +57,16 @@ $ php artisan doctrine:generate:proxies
 $ php artisan serve
 ```
 
-## Services
+##Services
 
 Method | Path | Description
 :----------: | :---------- | :----------
-![GET](public/img/get.png "GET")   | /api/v1/forums | Get all subForums.
-![GET](public/img/get.png "GET")   | /api/v1/subforum/{subForumId} | Get a subForum by subForumId.
-![GET](public/img/get.png "GET")  | /api/v1/post/{postId} | Get a post by postId.
+![GET](public/img/get.png "GET")   | /api/v1/forums | Get all subForums
+![GET](public/img/get.png "GET")   | /api/v1/subforum/{subForumId} | Get a subForum by subForumId
+![GET](public/img/get.png "GET")  | /api/v1/post/{postId} | Get a post by postId
+![POST](public/img/post.png "POST")  | /api/v1/post | Create a post
 
-### Get all subForums
+###Get all subForums
 ![GET](public/img/get.png "GET") /api/v1/forums
 
 200 OK
@@ -89,7 +91,7 @@ Method | Path | Description
 ```
 
 
-### Get a subForum by subForumId
+###Get a subForum by subForumId
 ![GET](public/img/get.png "GET") /api/v1/subforum/{subForumId}
 
 200 OK
@@ -134,7 +136,7 @@ Method | Path | Description
 }
 ```
 
-### Get a post by postId
+###Get a post by postId
 ![GET](public/img/get.png "GET") /api/v1/post/{postId}
 
 200 OK
@@ -174,4 +176,19 @@ Method | Path | Description
 {
     "message": "The post <e241b9b5-2cf8-3011-81a7-50cfab97922a> does not exists"
 }
+```
+
+###Create a post
+![POST](public/img/post.png "POST") /api/v1/post
+
+Param | Type | Description
+:----------: | :---------- | :----------
+id | uuid | Id of post. Example: 8ad7705f-cddf-35ae-bf8b-acb25a420e86
+sub_forum_id | uuid | SubForum id. Example: b10203df-9911-3c5d-8e2e-de480e9102e8
+author_id | uuid | Author id. Example: dc786f34-0217-3bf6-a20b-4f6b2f7890f8
+title | string | Title of post. Example: My awesome title
+content | string | Content of post. Example: `<h1>This is the content!</h1>`
+
+201 Created
+```json
 ```
