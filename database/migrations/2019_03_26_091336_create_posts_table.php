@@ -18,7 +18,7 @@ class CreatePostsTable extends Migration
             $table->string('sub_forum_id');
             $table->string('author_id');
             $table->string('title');
-            $table->string('content');
+            $table->text('content');
             $table->boolean('is_open');
             $table->string('slug')->unique();
             $table->timestamps();

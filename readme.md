@@ -39,7 +39,12 @@ $ php artisan migrate:install
 $ php artisan migrate:refresh --seed
 ```
 
-. Generate Doctrine Proxies
+- Set the application key
+```
+$ php artisan key:generate
+```
+
+- Generate Doctrine Proxies
 
 ```
 $ php artisan doctrine:generate:proxies
