@@ -27,4 +27,10 @@ final class MySqlPostRepository extends EntityRepository implements PostReposito
 
         return null === $posts ? null : new Posts($posts);
     }
+
+    public function save(Post $post): void
+    {
+        $this->_em->persist($post);
+        $this->_em->flush();
+    }
 }

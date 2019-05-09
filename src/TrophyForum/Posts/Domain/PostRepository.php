@@ -11,4 +11,6 @@ interface PostRepository
     public function byId(PostId $id): ?Post;
 
     public function bySubForumId(SubForumId $subForumId): ?Posts;
+
+    public function save(Post $post): void;
 }

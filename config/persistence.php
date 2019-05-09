@@ -2,6 +2,8 @@
 
 use LaravelDoctrine\ORM\Facades\EntityManager;
 use Tests\TrophyForum\SubForums\Infrastructure\InMemorySubForumRepository;
+use TrophyForum\Authors\Domain\AuthorRepository;
+use TrophyForum\Authors\Domain\Author;
 use TrophyForum\Posts\Domain\Post;
 use TrophyForum\Posts\Domain\PostRepository;
 use TrophyForum\Responses\Domain\Response;
@@ -13,6 +15,14 @@ return [
     'driver' => env('GATEWAY_DRIVER'),
 
     'repository-gateways' => [
+
+        AuthorRepository::class => [
+            'doctrine'  => function () {
+                return EntityManager::getRepository(Author::class);
+            },
+            'in-memory' => function () {
+            },
+        ],
 
         PostRepository::class => [
             'doctrine'  => function () {

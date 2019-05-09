@@ -4,6 +4,7 @@ declare(strict_types = 1);
 
 namespace TrophyForum\Posts\Domain;
 
+use DateTime;
 use Doctrine\ORM\PersistentCollection;
 use Shared\Domain\ValueObject\Content;
 use Shared\Domain\ValueObject\CreatedAt;
@@ -48,6 +49,21 @@ class Post
         $this->slug      = $slug;
         $this->createdAt = $createdAt;
         $this->updatedAt = $updatedAt;
+    }
+
+    public static function create(
+        PostId $id,
+        SubForum $subForum,
+        Author $author,
+        Title $title,
+        Content $content
+    ): Post {
+        $isOpen    = new PostIsOpen(true);
+        $slug      = new Slug($title->value());
+        $createdAt = new CreatedAt(new DateTime());
+        $updatedAt = new UpdatedAt(new DateTime());
+
+        return new self($id, $subForum, $author, $title, $content, $isOpen, null, $slug, $createdAt, $updatedAt);
     }
 
     public function id(): PostId
