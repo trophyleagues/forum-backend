@@ -4,11 +4,11 @@ Backend in PHP using Laravel. Hexagonal Architecture and Domain-Driven Design (D
 ## Table of Contents
 
 * [Installation](#Installation)
-* [Getting started](#Getting started)
+* [Getting started](#Getting%20started)
 * [Services](#Services)
-  * [Get all subForums.](#Get all subForums.)
-  * [Get a subForum by subForumId.](#Get a subForum by subForumId.)
-  * [Get a post by postId.](#Get a post by postId.)
+  * [Get all subForums](#Get%20all%20subForums)
+  * [Get a subForum by subForumId](#Get%20a%20subForum%20by%20subForumId)
+  * [Get a post by postId.](#Get%20a%20post%20by%20postId)
 
 ## Installation
 
@@ -59,7 +59,7 @@ Method | Path | Description
 ![GET](public/img/get.png "GET")   | /api/v1/subforum/{subForumId} | Get a subForum by subForumId.
 ![GET](public/img/get.png "GET")  | /api/v1/post/{postId} | Get a post by postId.
 
-### Get all subForums.
+### Get all subForums
 ![GET](public/img/get.png "GET") /api/v1/forums
 
 200 OK
@@ -84,7 +84,7 @@ Method | Path | Description
 ```
 
 
-### Get a subForum by subForumId.
+### Get a subForum by subForumId
 ![GET](public/img/get.png "GET") /api/v1/subforum/{subForumId}
 
 200 OK
@@ -129,7 +129,7 @@ Method | Path | Description
 }
 ```
 
-### Get a post by postId.
+### Get a post by postId
 ![GET](public/img/get.png "GET") /api/v1/post/{postId}
 
 200 OK
