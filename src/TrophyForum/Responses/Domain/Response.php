@@ -4,6 +4,7 @@ declare(strict_types = 1);
 
 namespace TrophyForum\Responses\Domain;
 
+use DateTime;
 use Shared\Domain\ValueObject\Content;
 use Shared\Domain\ValueObject\CreatedAt;
 use Shared\Domain\ValueObject\UpdatedAt;
@@ -35,6 +36,18 @@ class Response
         $this->updatedAt = $updatedAt;
     }
 
+    public static function create(
+        ResponseId $id,
+        Post $post,
+        Author $author,
+        Content $content
+    ): Response {
+        $createdAt = new CreatedAt(new DateTime());
+        $updatedAt = new UpdatedAt(new DateTime());
+
+        return new self($id, $post, $author, $content, $createdAt, $updatedAt);
+    }
+
     public function id(): ResponseId
     {
         return $this->id;
@@ -63,5 +76,11 @@ class Response
     public function updatedAt(): UpdatedAt
     {
         return $this->updatedAt;
+    }
+
+    public function updateContent(Content $content): void
+    {
+        $this->content   = $content;
+        $this->updatedAt = new UpdatedAt(new DateTime());
     }
 }

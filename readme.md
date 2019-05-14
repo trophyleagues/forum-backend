@@ -10,6 +10,9 @@ Backend in PHP using Laravel. Hexagonal Architecture and Domain-Driven Design (D
   * [Get a subForum by subForumId](###Get%20a%20subForum%20by%20subForumId)
   * [Get a post by postId](###Get%20a%20post%20by%20postId)
   * [Create a post](###Create%20a%20post)
+  * [Update a post](###Update%20a%20post)
+  * [Create a response](###Create%20a%20response)
+  * [Update a response](###Update%20a%20response)
 
 ## Installation
 
@@ -66,7 +69,7 @@ Method | Path | Description
 ![GET](public/img/get.png "GET")  | /api/v1/post/{postId} | Get a post by postId
 ![POST](public/img/post.png "POST")  | /api/v1/post | Create a post
 
-###Get all subForums
+### Get all subForums
 ![GET](public/img/get.png "GET") /api/v1/forums
 
 200 OK
@@ -200,6 +203,32 @@ Param | Type | Description
 :----------: | :---------- | :----------
 title | string | Title of post. Example: My awesome title 2
 content | string | Content of post. Example: `<h1>This is the content 2!</h1>`
+
+200 OK
+```json
+```
+
+
+### Create a response
+![POST](public/img/post.png "POST") /api/v1/response
+
+Param | Type | Description
+:----------: | :---------- | :----------
+id | uuid | Id of response. Example: 8ad7705f-cddf-35ae-bf8b-acb25a420e86
+post_id | uuid | Post id. Example: b10203df-9911-3c5d-8e2e-de480e9102e8
+author_id | uuid | Author id. Example: dc786f34-0217-3bf6-a20b-4f6b2f7890f8
+content | string | Content of response. Example: `<p>This is the response!</p>`
+
+201 Created
+```json
+```
+
+### Update a response
+![PUT](public/img/put.png "PUT") /api/v1/response/{responseId}
+
+Param | Type | Description
+:----------: | :---------- | :----------
+content | string | Content of response. Example: `<p>This is the response 2!</p>`
 
 200 OK
 ```json
