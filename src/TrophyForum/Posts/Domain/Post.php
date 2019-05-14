@@ -115,4 +115,16 @@ class Post
     {
         return $this->updatedAt;
     }
+
+    public function updateTitle(Title $title): void
+    {
+        $this->title     = $title;
+        $this->updatedAt = new UpdatedAt(new DateTime());
+    }
+
+    public function updateContent(Content $content): void
+    {
+        $this->content   = $content;
+        $this->updatedAt = new UpdatedAt(new DateTime());
+    }
 }

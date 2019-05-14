@@ -28,4 +28,9 @@ final class InMemoryPostRepository implements PostRepository
             ]
         );
     }
+
+    public function save(Post $post): void
+    {
+        // @todo Implement the awesome save() method!!!
+    }
 }

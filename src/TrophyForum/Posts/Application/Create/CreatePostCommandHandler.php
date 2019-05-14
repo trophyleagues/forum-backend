@@ -33,6 +33,6 @@ final class CreatePostCommandHandler
         $content  = new Content($command->content());
         $id       = new PostId($command->id());
 
-        $this->creator->create($id, $subForum, $author, $title, $content);
+        $this->creator->__invoke($id, $subForum, $author, $title, $content);
     }
 }

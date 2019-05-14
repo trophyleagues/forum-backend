@@ -11,7 +11,7 @@ Backend in PHP using Laravel. Hexagonal Architecture and Domain-Driven Design (D
   * [Get a post by postId](###Get%20a%20post%20by%20postId)
   * [Create a post](###Create%20a%20post)
 
-##Installation
+## Installation
 
 - Copy the `.env.example` file to a local `.env` and ensure all the settings are correct for their local environment, filling the secret keys or providing their own values when is necessary.
 
@@ -32,7 +32,7 @@ $ touch database/database.sqlite
 $ php artisan migrate:install
 ```
 
-##Getting started
+## Getting started
 
 - Seed the database with records
 
@@ -57,7 +57,7 @@ $ php artisan doctrine:generate:proxies
 $ php artisan serve
 ```
 
-##Services
+## Services
 
 Method | Path | Description
 :----------: | :---------- | :----------
@@ -91,7 +91,7 @@ Method | Path | Description
 ```
 
 
-###Get a subForum by subForumId
+### Get a subForum by subForumId
 ![GET](public/img/get.png "GET") /api/v1/subforum/{subForumId}
 
 200 OK
@@ -136,7 +136,7 @@ Method | Path | Description
 }
 ```
 
-###Get a post by postId
+### Get a post by postId
 ![GET](public/img/get.png "GET") /api/v1/post/{postId}
 
 200 OK
@@ -178,7 +178,7 @@ Method | Path | Description
 }
 ```
 
-###Create a post
+### Create a post
 ![POST](public/img/post.png "POST") /api/v1/post
 
 Param | Type | Description
@@ -190,5 +190,17 @@ title | string | Title of post. Example: My awesome title
 content | string | Content of post. Example: `<h1>This is the content!</h1>`
 
 201 Created
+```json
+```
+
+### Update a post
+![PUT](public/img/put.png "PUT") /api/v1/post/{postId}
+
+Param | Type | Description
+:----------: | :---------- | :----------
+title | string | Title of post. Example: My awesome title 2
+content | string | Content of post. Example: `<h1>This is the content 2!</h1>`
+
+200 OK
 ```json
 ```
