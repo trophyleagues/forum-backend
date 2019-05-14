@@ -68,6 +68,9 @@ Method | Path | Description
 ![GET](public/img/get.png "GET")   | /api/v1/subforum/{subForumId} | Get a subForum by subForumId
 ![GET](public/img/get.png "GET")  | /api/v1/post/{postId} | Get a post by postId
 ![POST](public/img/post.png "POST")  | /api/v1/post | Create a post
+![POST](public/img/put.png "PUT")  | /api/v1/post/{postId} | Update a post
+![POST](public/img/post.png "POST")  | /api/v1/response | Create a response
+![POST](public/img/put.png "PUT")  | /api/v1/response/{responseId} | Update a response
 
 ### Get all subForums
 ![GET](public/img/get.png "GET") /api/v1/forums
