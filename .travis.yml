@@ -2,3 +2,13 @@ language: php
 
 php:
   - '7.3'
+
+cache:
+  directories:
+    - $HOME/.composer/cache
+
+before_script:
+  - travis_retry composer update ${COMPOSER_FLAGS} --no-interaction --prefer-dist
+
+script:
+  - vendor/bin/phpunit --coverage-text --coverage-clover=coverage.clover
