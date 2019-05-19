@@ -1,4 +1,7 @@
 # Forum Backend
+[![Build Status](https://scrutinizer-ci.com/g/trophyleagues/forum-backend/badges/build.png?b=master)](https://scrutinizer-ci.com/g/trophyleagues/forum-backend/build-status/master)
+[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/trophyleagues/forum-backend/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/trophyleagues/forum-backend/?branch=master)
+
 Backend in PHP using Laravel. Hexagonal Architecture and Domain-Driven Design (DDD)
 
 ## Table of Contents
