@@ -13,6 +13,7 @@ before_script:
   - composer self-update
   - composer install --no-interaction
   - php artisan migrate:install --env=testing --no-interaction
+  - php artisan doctrine:generate:proxies
 
 script:
   - vendor/bin/phpunit
