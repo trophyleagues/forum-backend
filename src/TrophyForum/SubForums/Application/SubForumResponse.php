@@ -22,6 +22,7 @@ final class SubForumResponse
             'roles'       => (new RolesResponse())->__invoke($subForum->roles()),
             'total_posts' => $subForum->totalPosts()->value(),
             'posts'       => (new PostsResponse())->__invoke($subForum->posts()),
+            'slug'        => $subForum->slug()->value(),
             'created_at'  => $subForum->createdAt()->value(),
         ];
     }

@@ -25,12 +25,14 @@ final class SubForumTest extends TestCase
             $stub->totalPosts(),
             $stub->posts(),
             $stub->roles(),
+            $stub->slug(),
             $stub->createdAt(),
             $stub->updatedAt()
         );
 
         $this->assertSame($stub->id()->value(), $subForum->id()->value());
         $this->assertSame($stub->name()->value(), $subForum->name()->value());
+        $this->assertSame($stub->slug()->value(), $subForum->slug()->value());
         $this->assertSame($stub->createdAt()->value(), $subForum->createdAt()->value());
         $this->assertSame($stub->updatedAt()->value(), $subForum->updatedAt()->value());
     }

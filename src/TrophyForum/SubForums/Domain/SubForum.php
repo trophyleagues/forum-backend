@@ -4,8 +4,10 @@ declare(strict_types = 1);
 
 namespace TrophyForum\SubForums\Domain;
 
+use DateTime;
 use Doctrine\ORM\PersistentCollection;
 use Shared\Domain\ValueObject\CreatedAt;
+use Shared\Domain\ValueObject\Slug;
 use Shared\Domain\ValueObject\UpdatedAt;
 use TrophyForum\Authors\Domain\Author;
 
@@ -19,6 +21,7 @@ class SubForum
     private $totalPosts;
     private $posts;
     private $roles;
+    private $slug;
     private $createdAt;
     private $updatedAt;
 
@@ -31,6 +34,7 @@ class SubForum
         SubForumTotalPosts $totalPosts,
         PersistentCollection $posts = null,
         PersistentCollection $roles = null,
+        Slug $slug,
         CreatedAt $createdAt,
         UpdatedAt $updatedAt
     ) {
@@ -42,6 +46,7 @@ class SubForum
         $this->totalPosts  = $totalPosts;
         $this->posts       = $posts;
         $this->roles       = $roles;
+        $this->slug        = $slug;
         $this->createdAt   = $createdAt;
         $this->updatedAt   = $updatedAt;
     }
@@ -65,8 +70,9 @@ class SubForum
             new SubForumTotalPosts(0),
             $posts,
             $roles,
-            new CreatedAt(new \DateTime()),
-            new UpdatedAt(new \DateTime())
+            new Slug($name->value()),
+            new CreatedAt(new DateTime()),
+            new UpdatedAt(new DateTime())
         );
     }
 
@@ -108,6 +114,11 @@ class SubForum
     public function roles(): ?PersistentCollection
     {
         return $this->roles;
+    }
+
+    public function slug(): Slug
+    {
+        return $this->slug;
     }
 
     public function createdAt(): CreatedAt

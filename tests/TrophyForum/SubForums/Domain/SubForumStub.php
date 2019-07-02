@@ -4,14 +4,14 @@ declare(strict_types = 1);
 
 namespace Tests\TrophyForum\SubForums\Domain;
 
-use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\PersistentCollection;
 use Shared\Domain\ValueObject\CreatedAt;
+use Shared\Domain\ValueObject\Slug;
 use Shared\Domain\ValueObject\UpdatedAt;
 use Tests\Shared\Domain\ValueObject\CreatedAtStub;
+use Tests\Shared\Domain\ValueObject\SlugStub;
 use Tests\Shared\Domain\ValueObject\UpdatedAtStub;
 use Tests\TrophyForum\Authors\Domain\AuthorStub;
-use Tests\TrophyForum\Posts\Domain\PostStub;
 use TrophyForum\Authors\Domain\Author;
 use TrophyForum\SubForums\Domain\SubForum;
 use TrophyForum\SubForums\Domain\SubForumDescription;
@@ -31,11 +31,12 @@ final class SubForumStub
         SubForumTotalPosts $totalPosts,
         PersistentCollection $posts = null,
         PersistentCollection $roles = null,
+        Slug $slug,
         CreatedAt $createdAt,
         UpdatedAt $updatedAt
     ) {
         return new SubForum(
-            $id, $author, $name, $description, $isAnnounce, $totalPosts, $posts, $roles, $createdAt, $updatedAt
+            $id, $author, $name, $description, $isAnnounce, $totalPosts, $posts, $roles, $slug, $createdAt, $updatedAt
         );
     }
 
@@ -50,6 +51,7 @@ final class SubForumStub
             SubForumTotalPostsStub::random(),
             null,
             null,
+            SlugStub::random(),
             CreatedAtStub::random(),
             UpdatedAtStub::random()
         );

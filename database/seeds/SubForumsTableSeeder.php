@@ -46,12 +46,13 @@ final class SubForumsTableSeeder extends Seeder
                     'name'        => SubForumNameStub::random()->value(),
                     'description' => SubForumDescriptionStub::random()->value(),
                     'is_announce' => SubForumIsAnnounceStub::random()->value(),
+                    'slug'        => SlugStub::random()->value(),
                     'created_at'  => CreatedAtStub::random()->value(),
                     'updated_at'  => UpdatedAtStub::random()->value(),
                 ]
             );
 
-            for ($j = 0; $j < rand(0,10); $j++) {
+            for ($j = 0; $j < rand(0, 10); $j++) {
                 $authorId = AuthorIdStub::random()->value();
 
                 Author::create(

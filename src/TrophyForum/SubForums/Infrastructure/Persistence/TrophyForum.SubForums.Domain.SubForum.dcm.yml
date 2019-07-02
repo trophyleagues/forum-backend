@@ -16,6 +16,9 @@ TrophyForum\SubForums\Domain\SubForum:
         isAnnounce:
             type: sub_forum_is_announce
             nullable: false
+        slug:
+            type: slug
+            nullable: false
         createdAt:
             type: created_at
             nullable: false
