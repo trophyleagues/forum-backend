@@ -6,9 +6,9 @@ namespace Shared\Infrastructure\Persistence;
 
 use Doctrine\DBAL\Platforms\AbstractPlatform;
 use Shared\Domain\ValueObject\Slug;
-use Shared\Infrastructure\Doctrine\Types\DateTimeType;
+use Shared\Infrastructure\Doctrine\Types\StringType;
 
-final class SlugType extends DateTimeType
+final class SlugType extends StringType
 {
     const NAME = 'slug';
 

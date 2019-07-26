@@ -1,5 +1,31 @@
 <?php
 
+use DoctrineExtensions\Query\Mysql\Date;
+use DoctrineExtensions\Query\Mysql\Day;
+use DoctrineExtensions\Query\Mysql\Month;
+use DoctrineExtensions\Query\Mysql\Year;
+use Shared\Infrastructure\Doctrine\Types\DoctrineDateTimeImmutable;
+use Shared\Infrastructure\Persistence\ContentType;
+use Shared\Infrastructure\Persistence\CreatedAtType;
+use Shared\Infrastructure\Persistence\EmailType;
+use Shared\Infrastructure\Persistence\PasswordType;
+use Shared\Infrastructure\Persistence\SlugType;
+use Shared\Infrastructure\Persistence\TitleType;
+use Shared\Infrastructure\Persistence\UpdatedAtType;
+use TrophyForum\Authors\Infrastructure\Persistence\AuthorAvatarType;
+use TrophyForum\Authors\Infrastructure\Persistence\AuthorIdType;
+use TrophyForum\Authors\Infrastructure\Persistence\AuthorNameType;
+use TrophyForum\Posts\Infrastructure\Persistence\PostIdType;
+use TrophyForum\Posts\Infrastructure\Persistence\PostIsOpenType;
+use TrophyForum\Responses\Infrastructure\Persistence\ResponseIdType;
+use TrophyForum\Roles\Infrastructure\Persistence\RoleIdType;
+use TrophyForum\Roles\Infrastructure\Persistence\RoleNameType;
+use TrophyForum\SubForums\Infrastructure\Persistence\SubForumDescriptionType;
+use TrophyForum\SubForums\Infrastructure\Persistence\SubForumIdType;
+use TrophyForum\SubForums\Infrastructure\Persistence\SubForumIsAnnounceType;
+use TrophyForum\SubForums\Infrastructure\Persistence\SubForumNameType;
+use TrophyForum\Users\Infrastructure\Persistence\UserIdType;
+
 return [
 
     /*
@@ -115,30 +141,34 @@ return [
     */
     'custom_types'               => [
         'json'              => LaravelDoctrine\ORM\Types\Json::class,
-        'DateTimeImmutable' => \Shared\Infrastructure\Doctrine\Types\DoctrineDateTimeImmutable::class,
+        'DateTimeImmutable' => DoctrineDateTimeImmutable::class,
 
-        'author_id'     => \TrophyForum\Authors\Infrastructure\Persistence\AuthorIdType::class,
-        'author_name'   => \TrophyForum\Authors\Infrastructure\Persistence\AuthorNameType::class,
-        'author_avatar' => \TrophyForum\Authors\Infrastructure\Persistence\AuthorAvatarType::class,
+        'author_id'     => AuthorIdType::class,
+        'author_name'   => AuthorNameType::class,
+        'author_avatar' => AuthorAvatarType::class,
 
-        'post_id'      => \TrophyForum\Posts\Infrastructure\Persistence\PostIdType::class,
-        'post_is_open' => \TrophyForum\Posts\Infrastructure\Persistence\PostIsOpenType::class,
+        'post_id'      => PostIdType::class,
+        'post_is_open' => PostIsOpenType::class,
 
-        'sub_forum_id'          => \TrophyForum\SubForums\Infrastructure\Persistence\SubForumIdType::class,
-        'sub_forum_name'        => \TrophyForum\SubForums\Infrastructure\Persistence\SubForumNameType::class,
-        'sub_forum_description' => \TrophyForum\SubForums\Infrastructure\Persistence\SubForumDescriptionType::class,
-        'sub_forum_is_announce' => \TrophyForum\SubForums\Infrastructure\Persistence\SubForumIsAnnounceType::class,
+        'response_id' => ResponseIdType::class,
 
-        'response_id' => \TrophyForum\Responses\Infrastructure\Persistence\ResponseIdType::class,
+        'role_id'   => RoleIdType::class,
+        'role_name' => RoleNameType::class,
 
-        'role_id'   => \TrophyForum\Roles\Infrastructure\Persistence\RoleIdType::class,
-        'role_name' => \TrophyForum\Roles\Infrastructure\Persistence\RoleNameType::class,
+        'sub_forum_id'          => SubForumIdType::class,
+        'sub_forum_name'        => SubForumNameType::class,
+        'sub_forum_description' => SubForumDescriptionType::class,
+        'sub_forum_is_announce' => SubForumIsAnnounceType::class,
 
-        'content'    => \Shared\Infrastructure\Persistence\ContentType::class,
-        'created_at' => \Shared\Infrastructure\Persistence\CreatedAtType::class,
-        'slug'       => \Shared\Infrastructure\Persistence\SlugType::class,
-        'title'      => \Shared\Infrastructure\Persistence\TitleType::class,
-        'updated_at' => \Shared\Infrastructure\Persistence\UpdatedAtType::class,
+        'user_id' => UserIdType::class,
+
+        'content'    => ContentType::class,
+        'created_at' => CreatedAtType::class,
+        'email'      => EmailType::class,
+        'password'   => PasswordType::class,
+        'slug'       => SlugType::class,
+        'title'      => TitleType::class,
+        'updated_at' => UpdatedAtType::class,
     ],
     /*
     |--------------------------------------------------------------------------
@@ -146,10 +176,10 @@ return [
     |--------------------------------------------------------------------------
     */
     'custom_datetime_functions'  => [
-        'year'  => \DoctrineExtensions\Query\Mysql\Year::class,
-        'month' => \DoctrineExtensions\Query\Mysql\Month::class,
-        'day'   => \DoctrineExtensions\Query\Mysql\Day::class,
-        'date'  => \DoctrineExtensions\Query\Mysql\Date::class,
+        'year'  => Year::class,
+        'month' => Month::class,
+        'day'   => Day::class,
+        'date'  => Date::class,
     ],
     /*
     |--------------------------------------------------------------------------

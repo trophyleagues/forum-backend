@@ -10,6 +10,8 @@ use TrophyForum\Responses\Domain\Response;
 use TrophyForum\Responses\Domain\ResponseRepository;
 use TrophyForum\SubForums\Domain\SubForum;
 use TrophyForum\SubForums\Domain\SubForumRepository;
+use TrophyForum\Users\Domain\UserRepository;
+use TrophyForum\Users\Infrastructure\GuzzleUserRepository;
 
 return [
     'driver' => env('GATEWAY_DRIVER'),
@@ -44,6 +46,14 @@ return [
         ResponseRepository::class => [
             'doctrine'  => function () {
                 return EntityManager::getRepository(Response::class);
+            },
+            'in-memory' => function () {
+            },
+        ],
+
+        UserRepository::class => [
+            'doctrine'  => function () {
+                return new GuzzleUserRepository();
             },
             'in-memory' => function () {
             },
