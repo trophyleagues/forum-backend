@@ -2,18 +2,18 @@
 
 declare(strict_types = 1);
 
-namespace Shared\Infrastructure\Persistence;
+namespace TrophyForum\Users\Infrastructure\Persistence;
 
 use Doctrine\DBAL\Platforms\AbstractPlatform;
-use Shared\Domain\ValueObject\Title;
 use Shared\Infrastructure\Doctrine\Types\StringType;
+use TrophyForum\Users\Domain\UserId;
 
-final class TitleType extends StringType
+final class UserIdType extends StringType
 {
-    const NAME = 'title';
+    const NAME = 'user_id';
 
     public function convertToPHPValue($value, AbstractPlatform $platform)
     {
-        return new Title($value);
+        return new UserId($value);
     }
 }
