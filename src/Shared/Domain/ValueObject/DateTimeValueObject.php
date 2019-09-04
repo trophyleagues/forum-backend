@@ -4,11 +4,13 @@ declare(strict_types = 1);
 
 namespace Shared\Domain\ValueObject;
 
+use DateTime;
+
 abstract class DateTimeValueObject
 {
     protected $value;
 
-    public function __construct(\DateTime $value)
+    public function __construct(DateTime $value)
     {
         $this->value = $value;
     }
@@ -18,7 +20,7 @@ abstract class DateTimeValueObject
         return $this->value->format('Y-m-d h:i:s');
     }
 
-    public function dateTime(): \DateTime
+    public function dateTime(): DateTime
     {
         return $this->value;
     }
