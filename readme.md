@@ -67,6 +67,8 @@ $ php artisan serve
 
 Method | Path | Description
 :----------: | :---------- | :----------
+![POST](public/img/post.png "POST")   | /api/v1/register | Create a new user
+![POST](public/img/post.png "POST")   | /api/v1/login | Login a user
 ![GET](public/img/get.png "GET")   | /api/v1/forums | Get all subForums
 ![GET](public/img/get.png "GET")   | /api/v1/subforum/{subForumId} | Get a subForum by subForumId
 ![GET](public/img/get.png "GET")  | /api/v1/post/{postId} | Get a post by postId
@@ -74,6 +76,38 @@ Method | Path | Description
 ![POST](public/img/put.png "PUT")  | /api/v1/post/{postId} | Update a post
 ![POST](public/img/post.png "POST")  | /api/v1/response | Create a response
 ![POST](public/img/put.png "PUT")  | /api/v1/response/{responseId} | Update a response
+
+
+### Create a new user.
+![POST](public/img/post.png "POST") api/v1/register
+
+Param | Type | Description
+------- | ---------------- | :----------
+country  | `string` | Abbreviation of selected country. 
+email  | `string` | Email of user.
+password  | `string` | Password.
+
+201 Created
+```json
+[]
+```
+
+### Login a user
+![POST](public/img/post.png "POST") api/v1/login
+
+Param | Type | Description
+------- | ---------------- | :----------
+email  | `string` | Email of user.
+password  | `string` | Password.
+
+200 OK
+````json
+{
+    "access_token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9",
+    "user_id": 1,
+    "token_type": "bearer"
+}
+````
 
 ### Get all subForums
 ![GET](public/img/get.png "GET") /api/v1/forums
