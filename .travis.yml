@@ -3,6 +3,9 @@ language: php
 php:
   - '7.3'
 
+services:
+  - mysql
+
 cache:
   directories:
     - $HOME/.composer/cache
