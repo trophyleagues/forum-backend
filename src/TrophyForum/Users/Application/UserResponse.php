@@ -13,6 +13,7 @@ final class UserResponse
         return [
             'id'    => $user->id()->value(),
             'email' => $user->email()->value(),
+            'token' => $user->token()->value(),
         ];
     }
 }

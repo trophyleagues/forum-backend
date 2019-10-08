@@ -12,6 +12,7 @@ use Shared\Domain\ValueObject\Password;
 use TrophyForum\Users\Domain\User;
 use TrophyForum\Users\Domain\UserId;
 use TrophyForum\Users\Domain\UserRepository;
+use TrophyForum\Users\Domain\UserToken;
 
 final class GuzzleUserRepository implements UserRepository
 {
@@ -42,7 +43,8 @@ final class GuzzleUserRepository implements UserRepository
         return new User(
             new UserId($response->user_id),
             $email,
-            $password
+            $password,
+            new UserToken($response->access_token)
         );
     }
 
