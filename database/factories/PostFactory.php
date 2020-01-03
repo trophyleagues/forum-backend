@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Post;
 use Tests\Shared\Domain\ValueObject\ContentStub;
 use Tests\Shared\Domain\ValueObject\CreatedAtStub;
 use Tests\Shared\Domain\ValueObject\SlugStub;
@@ -8,19 +9,21 @@ use Tests\Shared\Domain\ValueObject\UpdatedAtStub;
 use Tests\TrophyForum\Authors\Domain\AuthorStub;
 use Tests\TrophyForum\Posts\Domain\PostIdStub;
 use Tests\TrophyForum\Posts\Domain\PostIsOpenStub;
+use Tests\TrophyForum\Posts\Domain\PostVisualizationStub;
 
 $factory->define(
-    \App\Models\Post::class,
+    Post::class,
     function () {
         return [
-            'id'         => PostIdStub::random()->value(),
-            'title'      => TitleStub::random()->value(),
-            'content'    => ContentStub::random()->value(),
-            'author_id'  => AuthorStub::random()->id()->value(),
-            'is_open'    => PostIsOpenStub::random()->value(),
-            'slug'       => SlugStub::random()->value(),
-            'created_at' => CreatedAtStub::random()->value(),
-            'updated_at' => UpdatedAtStub::random()->value(),
+            'id'            => PostIdStub::random()->value(),
+            'title'         => TitleStub::random()->value(),
+            'content'       => ContentStub::random()->value(),
+            'author_id'     => AuthorStub::random()->id()->value(),
+            'is_open'       => PostIsOpenStub::random()->value(),
+            'slug'          => SlugStub::random()->value(),
+            'visualization' => PostVisualizationStub::random()->value(),
+            'created_at'    => CreatedAtStub::random()->value(),
+            'updated_at'    => UpdatedAtStub::random()->value(),
         ];
     }
 );

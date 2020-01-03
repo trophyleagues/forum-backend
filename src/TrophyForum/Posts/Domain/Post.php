@@ -24,6 +24,7 @@ class Post
     private $isOpen;
     private $responses;
     private $slug;
+    private $visualization;
     private $createdAt;
     private $updatedAt;
 
@@ -36,19 +37,21 @@ class Post
         PostIsOpen $isOpen,
         PersistentCollection $responses = null,
         Slug $slug,
+        PostVisualization $visualization,
         CreatedAt $createdAt,
         UpdatedAt $updatedAt
     ) {
-        $this->id        = $id;
-        $this->subForum  = $subForum;
-        $this->author    = $author;
-        $this->title     = $title;
-        $this->content   = $content;
-        $this->isOpen    = $isOpen;
-        $this->responses = $responses;
-        $this->slug      = $slug;
-        $this->createdAt = $createdAt;
-        $this->updatedAt = $updatedAt;
+        $this->id            = $id;
+        $this->subForum      = $subForum;
+        $this->author        = $author;
+        $this->title         = $title;
+        $this->content       = $content;
+        $this->isOpen        = $isOpen;
+        $this->responses     = $responses;
+        $this->slug          = $slug;
+        $this->visualization = $visualization;
+        $this->createdAt     = $createdAt;
+        $this->updatedAt     = $updatedAt;
     }
 
     public static function create(
@@ -58,12 +61,25 @@ class Post
         Title $title,
         Content $content
     ): Post {
-        $isOpen    = new PostIsOpen(true);
-        $slug      = new Slug($title->value());
-        $createdAt = new CreatedAt(new DateTime());
-        $updatedAt = new UpdatedAt(new DateTime());
+        $isOpen        = new PostIsOpen(true);
+        $slug          = new Slug($title->value());
+        $visualization = new PostVisualization(0);
+        $createdAt     = new CreatedAt(new DateTime());
+        $updatedAt     = new UpdatedAt(new DateTime());
 
-        return new self($id, $subForum, $author, $title, $content, $isOpen, null, $slug, $createdAt, $updatedAt);
+        return new self(
+            $id,
+            $subForum,
+            $author,
+            $title,
+            $content,
+            $isOpen,
+            null,
+            $slug,
+            $visualization,
+            $createdAt,
+            $updatedAt
+        );
     }
 
     public function id(): PostId
@@ -106,6 +122,11 @@ class Post
         return $this->slug;
     }
 
+    public function visualization(): PostVisualization
+    {
+        return $this->visualization;
+    }
+
     public function createdAt(): CreatedAt
     {
         return $this->createdAt;
@@ -126,5 +147,11 @@ class Post
     {
         $this->content   = $content;
         $this->updatedAt = new UpdatedAt(new DateTime());
+    }
+
+    public function increaseVisualization(): void
+    {
+        $this->visualization = $this->visualization->increase();
+        $this->updatedAt     = new UpdatedAt(new DateTime());
     }
 }

@@ -24,6 +24,8 @@ final class PostResponse
             'is_open'         => $post->isOpen()->value(),
             'total_responses' => null === $post->responses() ? 0 : count($responses),
             'responses'       => null === $post->responses() ? null : $responses,
+            'slug'            => $post->slug()->value(),
+            'visualization'   => $post->visualization()->value(),
             'created_at'      => $post->createdAt()->value(),
             'updated_at'      => $post->updatedAt()->value(),
         ];

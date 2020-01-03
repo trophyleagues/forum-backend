@@ -17,6 +17,7 @@ use TrophyForum\Authors\Infrastructure\Persistence\AuthorIdType;
 use TrophyForum\Authors\Infrastructure\Persistence\AuthorNameType;
 use TrophyForum\Posts\Infrastructure\Persistence\PostIdType;
 use TrophyForum\Posts\Infrastructure\Persistence\PostIsOpenType;
+use TrophyForum\Posts\Infrastructure\Persistence\PostVisualizationType;
 use TrophyForum\Responses\Infrastructure\Persistence\ResponseIdType;
 use TrophyForum\Roles\Infrastructure\Persistence\RoleIdType;
 use TrophyForum\Roles\Infrastructure\Persistence\RoleNameType;
@@ -147,8 +148,9 @@ return [
         'author_name'   => AuthorNameType::class,
         'author_avatar' => AuthorAvatarType::class,
 
-        'post_id'      => PostIdType::class,
-        'post_is_open' => PostIsOpenType::class,
+        'post_id'            => PostIdType::class,
+        'post_is_open'       => PostIsOpenType::class,
+        'post_visualization' => PostVisualizationType::class,
 
         'response_id' => ResponseIdType::class,
 

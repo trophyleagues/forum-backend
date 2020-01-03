@@ -21,6 +21,7 @@ use TrophyForum\Authors\Domain\Author;
 use TrophyForum\Posts\Domain\Post;
 use TrophyForum\Posts\Domain\PostId;
 use TrophyForum\Posts\Domain\PostIsOpen;
+use TrophyForum\Posts\Domain\PostVisualization;
 use TrophyForum\Responses\Domain\Responses;
 use TrophyForum\SubForums\Domain\SubForum;
 
@@ -35,10 +36,11 @@ final class PostStub
         PostIsOpen $isOpen,
         PersistentCollection $responses = null,
         Slug $slug,
+        PostVisualization $visualization,
         CreatedAt $createdAt,
         UpdatedAt $updatedAt
     ): Post {
-        return new Post($id, $subForum, $author, $title, $content, $isOpen, $responses, $slug, $createdAt, $updatedAt);
+        return new Post($id, $subForum, $author, $title, $content, $isOpen, $responses, $slug, $visualization, $createdAt, $updatedAt);
     }
 
     public static function withId(PostId $id): Post
@@ -52,6 +54,7 @@ final class PostStub
             PostIsOpenStub::random(),
             null,
             SlugStub::random(),
+            PostVisualizationStub::random(),
             CreatedAtStub::random(),
             UpdatedAtStub::random()
         );
@@ -68,6 +71,7 @@ final class PostStub
             PostIsOpenStub::random(),
             null,
             SlugStub::random(),
+            PostVisualizationStub::random(),
             CreatedAtStub::random(),
             UpdatedAtStub::random()
         );

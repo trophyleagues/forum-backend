@@ -21,6 +21,7 @@ class CreatePostsTable extends Migration
             $table->text('content');
             $table->boolean('is_open');
             $table->string('slug')->unique();
+            $table->string('visualization')->default(0);
             $table->timestamps();
         });
     }

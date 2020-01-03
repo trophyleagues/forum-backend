@@ -20,6 +20,9 @@ TrophyForum\Posts\Domain\Post:
         slug:
             type: slug
             nullable: false
+        visualization:
+            type: post_visualization
+            nullable: false
         createdAt:
             type: created_at
             nullable: false

@@ -14,6 +14,7 @@ use Tests\TrophyForum\Authors\Domain\AuthorIdStub;
 use Tests\TrophyForum\Authors\Domain\AuthorNameStub;
 use Tests\TrophyForum\Posts\Domain\PostIdStub;
 use Tests\TrophyForum\Posts\Domain\PostIsOpenStub;
+use Tests\TrophyForum\Posts\Domain\PostVisualizationStub;
 use Tests\TrophyForum\Responses\Domain\ResponseIdStub;
 use Tests\TrophyForum\SubForums\Domain\SubForumIdStub;
 
@@ -36,15 +37,16 @@ final class PostsTableSeeder extends Seeder
 
             Post::create(
                 [
-                    'id'           => $postId,
-                    'sub_forum_id' => SubForumIdStub::random()->value(),
-                    'author_id'    => $authorId,
-                    'title'        => TitleStub::random()->value(),
-                    'content'      => ContentStub::random()->value(),
-                    'is_open'      => PostIsOpenStub::random()->value(),
-                    'slug'         => SlugStub::random()->value(),
-                    'created_at'   => CreatedAtStub::random()->value(),
-                    'updated_at'   => UpdatedAtStub::random()->value(),
+                    'id'            => $postId,
+                    'sub_forum_id'  => SubForumIdStub::random()->value(),
+                    'author_id'     => $authorId,
+                    'title'         => TitleStub::random()->value(),
+                    'content'       => ContentStub::random()->value(),
+                    'is_open'       => PostIsOpenStub::random()->value(),
+                    'slug'          => SlugStub::random()->value(),
+                    'visualization' => PostVisualizationStub::random()->value(),
+                    'created_at'    => CreatedAtStub::random()->value(),
+                    'updated_at'    => UpdatedAtStub::random()->value(),
                 ]
             );
 

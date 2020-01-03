@@ -23,6 +23,7 @@ final class PostTest extends TestCase
             $stub->isOpen(),
             $stub->responses(),
             $stub->slug(),
+            $stub->visualization(),
             $stub->createdAt(),
             $stub->updatedAt()
         );
@@ -35,6 +36,7 @@ final class PostTest extends TestCase
         $this->assertSame($stub->isOpen()->value(), $post->isOpen()->value());
         $this->assertSame($stub->responses(), $post->responses());
         $this->assertSame($stub->slug()->value(), $post->slug()->value());
+        $this->assertSame($stub->visualization()->value(), $post->visualization()->value());
         $this->assertSame($stub->createdAt()->value(), $post->createdAt()->value());
         $this->assertSame($stub->updatedAt()->value(), $post->updatedAt()->value());
     }
