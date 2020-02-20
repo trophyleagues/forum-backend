@@ -6,7 +6,7 @@ namespace TrophyForum\Posts\Application\Update;
 
 use Shared\Domain\ValueObject\Content;
 use Shared\Domain\ValueObject\Title;
-use TrophyForum\Posts\Domain\PostId;
+use Shared\Domain\ValueObject\Uuid;
 
 final class UpdatePostCommandHandler
 {
@@ -19,7 +19,7 @@ final class UpdatePostCommandHandler
 
     public function handle(UpdatePostCommand $command): void
     {
-        $id      = new PostId($command->id());
+        $id      = new Uuid($command->id());
         $title   = new Title($command->title());
         $content = new Content($command->content());
 

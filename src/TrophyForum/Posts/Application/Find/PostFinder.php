@@ -4,8 +4,8 @@ declare(strict_types = 1);
 
 namespace TrophyForum\Posts\Application\Find;
 
+use Shared\Domain\ValueObject\Uuid;
 use TrophyForum\Posts\Domain\Post;
-use TrophyForum\Posts\Domain\PostId;
 use TrophyForum\Posts\Domain\PostNotExist;
 use TrophyForum\Posts\Domain\PostRepository;
 
@@ -18,7 +18,7 @@ final class PostFinder
         $this->repository = $repository;
     }
 
-    public function __invoke(PostId $id): Post
+    public function __invoke(Uuid $id): Post
     {
         $post = $this->repository->byId($id);
 

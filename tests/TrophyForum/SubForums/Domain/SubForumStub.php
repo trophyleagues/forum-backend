@@ -8,6 +8,7 @@ use Doctrine\ORM\PersistentCollection;
 use Shared\Domain\ValueObject\CreatedAt;
 use Shared\Domain\ValueObject\Slug;
 use Shared\Domain\ValueObject\UpdatedAt;
+use Shared\Domain\ValueObject\Uuid;
 use Tests\Shared\Domain\ValueObject\CreatedAtStub;
 use Tests\Shared\Domain\ValueObject\SlugStub;
 use Tests\Shared\Domain\ValueObject\UpdatedAtStub;
@@ -15,7 +16,6 @@ use Tests\TrophyForum\Authors\Domain\AuthorStub;
 use TrophyForum\Authors\Domain\Author;
 use TrophyForum\SubForums\Domain\SubForum;
 use TrophyForum\SubForums\Domain\SubForumDescription;
-use TrophyForum\SubForums\Domain\SubForumId;
 use TrophyForum\SubForums\Domain\SubForumIsAnnounce;
 use TrophyForum\SubForums\Domain\SubForumName;
 use TrophyForum\SubForums\Domain\SubForumTotalPosts;
@@ -23,7 +23,7 @@ use TrophyForum\SubForums\Domain\SubForumTotalPosts;
 final class SubForumStub
 {
     public static function create(
-        SubForumId $id,
+        Uuid $id,
         Author $author,
         SubForumName $name,
         SubForumDescription $description,
@@ -43,7 +43,7 @@ final class SubForumStub
     public static function random()
     {
         return self::create(
-            SubForumIdStub::random(),
+            Uuid::random(),
             AuthorStub::random(),
             SubForumNameStub::random(),
             SubForumDescriptionStub::random(),

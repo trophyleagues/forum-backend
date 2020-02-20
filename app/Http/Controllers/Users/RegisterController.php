@@ -20,7 +20,12 @@ final class RegisterController extends Controller
         try {
             return JsonResponse::create(
                 $this->bus->dispatch(
-                    new RegisterUserCommand($request->get('email'), $request->get('password'), $request->get('country'))
+                    new RegisterUserCommand(
+                        $request->get('name'),
+                        $request->get('email'),
+                        $request->get('password'),
+                        $request->get('country')
+                    )
                 )
             );
         } catch (Exception $exception) {

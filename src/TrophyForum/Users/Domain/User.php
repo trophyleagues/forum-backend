@@ -6,6 +6,7 @@ namespace TrophyForum\Users\Domain;
 
 use Shared\Domain\ValueObject\Email;
 use Shared\Domain\ValueObject\Password;
+use Shared\Domain\ValueObject\Uuid;
 
 final class User
 {
@@ -14,7 +15,7 @@ final class User
     private $password;
     private $token;
 
-    public function __construct(UserId $id, Email $email, Password $password, UserToken $token)
+    public function __construct(Uuid $id, Email $email, Password $password, UserToken $token)
     {
         $this->id       = $id;
         $this->email    = $email;
@@ -22,7 +23,7 @@ final class User
         $this->token    = $token;
     }
 
-    public function id(): UserId
+    public function id(): Uuid
     {
         return $this->id;
     }

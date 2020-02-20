@@ -6,8 +6,8 @@ namespace TrophyForum\Posts\Application\Update;
 
 use Shared\Domain\ValueObject\Content;
 use Shared\Domain\ValueObject\Title;
+use Shared\Domain\ValueObject\Uuid;
 use TrophyForum\Posts\Application\Find\PostFinder;
-use TrophyForum\Posts\Domain\PostId;
 use TrophyForum\Posts\Domain\PostRepository;
 
 final class PostUpdater
@@ -22,7 +22,7 @@ final class PostUpdater
     }
 
     public function __invoke(
-        PostId $id,
+        Uuid $id,
         Title $title,
         Content $content
     ): void {

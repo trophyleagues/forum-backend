@@ -4,13 +4,13 @@ declare(strict_types = 1);
 
 namespace TrophyForum\Responses\Domain;
 
-use TrophyForum\Posts\Domain\PostId;
+use Shared\Domain\ValueObject\Uuid;
 
 interface ResponseRepository
 {
-    public function byId(ResponseId $id): ?Response;
+    public function byId(Uuid $id): ?Response;
 
-    public function byPostId(PostId $postId): ?Responses;
+    public function byPostId(Uuid $postId): ?Responses;
 
     public function save(Response $response): void;
 }

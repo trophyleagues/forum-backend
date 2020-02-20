@@ -4,16 +4,16 @@ declare(strict_types = 1);
 
 namespace Tests\TrophyForum\Posts\Application\Find;
 
+use Shared\Domain\ValueObject\Uuid;
 use Tests\TestCase;
-use Tests\TrophyForum\Posts\Domain\PostIdStub;
 use TrophyForum\Posts\Application\Find\FindPostQuery;
 
 final class FindPostQueryTest extends TestCase
 {
     /** @test */
-    function try_build()
+    function tryBuild(): void
     {
-        $postId = PostIdStub::random();
+        $postId = Uuid::random();
 
         $query = new FindPostQuery($postId->value());
 

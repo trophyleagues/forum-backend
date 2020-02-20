@@ -4,7 +4,7 @@ TrophyForum\Posts\Domain\Post:
     repositoryClass: TrophyForum\Posts\Infrastructure\MySqlPostRepository
     id:
         id:
-            type: post_id
+            type: uuid
             nullable: false
     fields:
         title:

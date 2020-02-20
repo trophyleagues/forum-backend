@@ -5,8 +5,8 @@ declare(strict_types = 1);
 namespace TrophyForum\Responses\Application\Update;
 
 use Shared\Domain\ValueObject\Content;
+use Shared\Domain\ValueObject\Uuid;
 use TrophyForum\Responses\Application\Find\ResponseFinder;
-use TrophyForum\Responses\Domain\ResponseId;
 use TrophyForum\Responses\Domain\ResponseRepository;
 
 final class ResponseUpdater
@@ -20,7 +20,7 @@ final class ResponseUpdater
         $this->repository = $repository;
     }
 
-    public function __invoke(ResponseId $id, Content $content): void
+    public function __invoke(Uuid $id, Content $content): void
     {
         $response = $this->finder->__invoke($id);
 

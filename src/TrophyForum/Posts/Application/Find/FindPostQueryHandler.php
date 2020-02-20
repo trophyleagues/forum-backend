@@ -4,8 +4,8 @@ declare(strict_types = 1);
 
 namespace TrophyForum\Posts\Application\Find;
 
+use Shared\Domain\ValueObject\Uuid;
 use TrophyForum\Posts\Application\PostResponse;
-use TrophyForum\Posts\Domain\PostId;
 use function Lambdish\Phunctional\apply;
 use function Lambdish\Phunctional\pipe;
 
@@ -20,7 +20,7 @@ final class FindPostQueryHandler
 
     public function handle(FindPostQuery $query): array
     {
-        $id = new PostId($query->id());
+        $id = new Uuid($query->id());
 
         return apply($this->finder, [$id]);
     }

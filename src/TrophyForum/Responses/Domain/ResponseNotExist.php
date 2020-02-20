@@ -4,8 +4,8 @@ declare(strict_types = 1);
 
 namespace TrophyForum\Responses\Domain;
 
-use Shared\Domain\ValueObject\Uuid;
+use Exception;
 
-final class ResponseId extends Uuid
+final class ResponseNotExist extends Exception
 {
 }

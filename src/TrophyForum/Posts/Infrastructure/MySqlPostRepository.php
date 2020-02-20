@@ -5,15 +5,14 @@ declare(strict_types = 1);
 namespace TrophyForum\Posts\Infrastructure;
 
 use Doctrine\ORM\EntityRepository;
+use Shared\Domain\ValueObject\Uuid;
 use TrophyForum\Posts\Domain\Post;
-use TrophyForum\Posts\Domain\PostId;
 use TrophyForum\Posts\Domain\PostRepository;
 use TrophyForum\Posts\Domain\Posts;
-use TrophyForum\SubForums\Domain\SubForumId;
 
 final class MySqlPostRepository extends EntityRepository implements PostRepository
 {
-    public function byId(PostId $id): ?Post
+    public function byId(Uuid $id): ?Post
     {
         /** @var Post $post */
         $post = $this->findOneBy(['id' => $id->value()]);
@@ -21,7 +20,7 @@ final class MySqlPostRepository extends EntityRepository implements PostReposito
         return $post;
     }
 
-    public function bySubForumId(SubForumId $subForumId): ?Posts
+    public function bySubForumId(Uuid $subForumId): ?Posts
     {
         $posts = $this->findBy(['subForum' => $subForumId->value()]);
 

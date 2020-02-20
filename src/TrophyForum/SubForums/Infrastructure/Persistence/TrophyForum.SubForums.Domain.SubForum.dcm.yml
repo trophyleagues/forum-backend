@@ -4,7 +4,7 @@ TrophyForum\SubForums\Domain\SubForum:
     repositoryClass: TrophyForum\SubForums\Infrastructure\MySqlSubForumRepository
     id:
         id:
-            type: sub_forum_id
+            type: uuid
             nullable: false
     fields:
         name:

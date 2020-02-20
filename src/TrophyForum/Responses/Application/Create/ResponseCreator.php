@@ -5,10 +5,10 @@ declare(strict_types = 1);
 namespace TrophyForum\Responses\Application\Create;
 
 use Shared\Domain\ValueObject\Content;
+use Shared\Domain\ValueObject\Uuid;
 use TrophyForum\Authors\Domain\Author;
 use TrophyForum\Posts\Domain\Post;
 use TrophyForum\Responses\Domain\Response;
-use TrophyForum\Responses\Domain\ResponseId;
 use TrophyForum\Responses\Domain\ResponseRepository;
 
 final class ResponseCreator
@@ -21,7 +21,7 @@ final class ResponseCreator
     }
 
     public function __invoke(
-        ResponseId $id,
+        Uuid $id,
         Post $post,
         Author $author,
         Content $content

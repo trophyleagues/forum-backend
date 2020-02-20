@@ -4,8 +4,8 @@ declare(strict_types = 1);
 
 namespace Tests\TrophyForum\Posts\Application\Find;
 
+use Shared\Domain\ValueObject\Uuid;
 use Tests\TestCase;
-use Tests\TrophyForum\Posts\Domain\PostIdStub;
 use Tests\TrophyForum\Posts\Infrastructure\InMemoryPostRepository;
 use TrophyForum\Posts\Application\Find\FindPostQuery;
 use TrophyForum\Posts\Application\Find\FindPostQueryHandler;
@@ -16,7 +16,7 @@ final class FindPostQueryHandlerTest extends TestCase
     /** @test */
     function tryBuildAndResponseArray(): void
     {
-        $postId = PostIdStub::random();
+        $postId = Uuid::random();
 
         $query = new FindPostQuery($postId->value());
 

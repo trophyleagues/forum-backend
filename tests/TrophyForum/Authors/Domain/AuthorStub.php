@@ -4,19 +4,20 @@ declare(strict_types = 1);
 
 namespace Tests\TrophyForum\Authors\Domain;
 
+use Shared\Domain\ValueObject\Uuid;
+use Tests\Shared\Domain\ValueObject\UuidStub;
 use TrophyForum\Authors\Domain\Author;
 use TrophyForum\Authors\Domain\AuthorAvatar;
-use TrophyForum\Authors\Domain\AuthorId;
 use TrophyForum\Authors\Domain\AuthorName;
 
 final class AuthorStub
 {
-    public static function create(AuthorId $id, AuthorName $name, AuthorAvatar $avatar)
+    public static function create(Uuid $id, AuthorName $name, AuthorAvatar $avatar)
     {
         return new Author($id, $name, $avatar);
     }
 
-    public static function withId(AuthorId $id): Author
+    public static function withId(Uuid $id): Author
     {
         return self::create(
             $id,
@@ -28,7 +29,7 @@ final class AuthorStub
     public static function random(): Author
     {
         return self::create(
-            AuthorIdStub::random(),
+            UuidStub::random(),
             AuthorNameStub::random(),
             AuthorAvatarStub::random()
         );

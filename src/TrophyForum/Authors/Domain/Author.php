@@ -4,27 +4,29 @@ declare(strict_types = 1);
 
 namespace TrophyForum\Authors\Domain;
 
+use Shared\Domain\ValueObject\Uuid;
+
 class Author
 {
     private $id;
     private $name;
     private $avatar;
 
-    public function __construct(AuthorId $id, AuthorName $name, AuthorAvatar $avatar)
+    public function __construct(Uuid $id, AuthorName $name, AuthorAvatar $avatar)
     {
         $this->id     = $id;
         $this->name   = $name;
         $this->avatar = $avatar;
     }
 
-    public static function create(AuthorId $id, AuthorName $name): Author
+    public static function create(Uuid $id, AuthorName $name): Author
     {
-        $avatar = new AuthorAvatar('');
+        $avatar = new AuthorAvatar('default.jpg');
 
         return new self($id, $name, $avatar);
     }
 
-    public function id(): AuthorId
+    public function id(): Uuid
     {
         return $this->id;
     }

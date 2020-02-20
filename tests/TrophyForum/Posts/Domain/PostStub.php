@@ -12,6 +12,7 @@ use Shared\Domain\ValueObject\Slug;
 use Shared\Domain\ValueObject\Title;
 use Shared\Domain\ValueObject\UnLike;
 use Shared\Domain\ValueObject\UpdatedAt;
+use Shared\Domain\ValueObject\Uuid;
 use Tests\Shared\Domain\ValueObject\ContentStub;
 use Tests\Shared\Domain\ValueObject\CreatedAtStub;
 use Tests\Shared\Domain\ValueObject\InLikeStub;
@@ -23,7 +24,6 @@ use Tests\TrophyForum\Authors\Domain\AuthorStub;
 use Tests\TrophyForum\SubForums\Domain\SubForumStub;
 use TrophyForum\Authors\Domain\Author;
 use TrophyForum\Posts\Domain\Post;
-use TrophyForum\Posts\Domain\PostId;
 use TrophyForum\Posts\Domain\PostIsOpen;
 use TrophyForum\Posts\Domain\PostVisualization;
 use TrophyForum\SubForums\Domain\SubForum;
@@ -31,7 +31,7 @@ use TrophyForum\SubForums\Domain\SubForum;
 final class PostStub
 {
     public static function create(
-        PostId $id,
+        Uuid $id,
         SubForum $subForum,
         Author $author,
         Title $title,
@@ -62,7 +62,7 @@ final class PostStub
         );
     }
 
-    public static function withId(PostId $id): Post
+    public static function withId(Uuid $id): Post
     {
         return self::create(
             $id,
@@ -84,7 +84,7 @@ final class PostStub
     public static function random(): Post
     {
         return self::create(
-            PostIdStub::random(),
+            Uuid::random(),
             SubForumStub::random(),
             AuthorStub::random(),
             TitleStub::random(),

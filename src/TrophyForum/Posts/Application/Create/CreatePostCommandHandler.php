@@ -6,11 +6,9 @@ namespace TrophyForum\Posts\Application\Create;
 
 use Shared\Domain\ValueObject\Content;
 use Shared\Domain\ValueObject\Title;
+use Shared\Domain\ValueObject\Uuid;
 use TrophyForum\Authors\Application\Find\AuthorFinder;
-use TrophyForum\Authors\Domain\AuthorId;
-use TrophyForum\Posts\Domain\PostId;
 use TrophyForum\SubForums\Application\Find\SubForumsFinder;
-use TrophyForum\SubForums\Domain\SubForumId;
 
 final class CreatePostCommandHandler
 {
@@ -28,10 +26,10 @@ final class CreatePostCommandHandler
     public function handle(CreatePostCommand $command): void
     {
         $title    = new Title($command->title());
-        $subForum = $this->subForumsFinder->__invoke(new SubForumId($command->subForumId()));
-        $author   = $this->authorFinder->__invoke(new AuthorId($command->authorId()));
+        $subForum = $this->subForumsFinder->__invoke(new Uuid($command->subForumId()));
+        $author   = $this->authorFinder->__invoke(new Uuid($command->authorId()));
         $content  = new Content($command->content());
-        $id       = new PostId($command->id());
+        $id       = new Uuid($command->id());
 
         $this->creator->__invoke($id, $subForum, $author, $title, $content);
     }

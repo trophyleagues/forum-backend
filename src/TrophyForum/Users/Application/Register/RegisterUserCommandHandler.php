@@ -7,7 +7,7 @@ namespace TrophyForum\Users\Application\Register;
 use Shared\Domain\ValueObject\Country;
 use Shared\Domain\ValueObject\Email;
 use Shared\Domain\ValueObject\Password;
-use Tests\TrophyForum\Authors\Domain\AuthorIdStub;
+use Tests\Shared\Domain\ValueObject\UuidStub;
 use TrophyForum\Authors\Application\Create\AuthorCreator;
 use TrophyForum\Authors\Domain\AuthorName;
 
@@ -30,6 +30,6 @@ final class RegisterUserCommandHandler
 
         $this->register->__invoke($email, $password, $country);
 
-        $this->authorCreator->__invoke(AuthorIdStub::random(), new AuthorName('Name'));
+        $this->authorCreator->__invoke(UuidStub::random(), new AuthorName($command->name()));
     }
 }

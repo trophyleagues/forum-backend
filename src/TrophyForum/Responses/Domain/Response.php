@@ -8,6 +8,7 @@ use DateTime;
 use Shared\Domain\ValueObject\Content;
 use Shared\Domain\ValueObject\CreatedAt;
 use Shared\Domain\ValueObject\UpdatedAt;
+use Shared\Domain\ValueObject\Uuid;
 use TrophyForum\Authors\Domain\Author;
 use TrophyForum\Posts\Domain\Post;
 
@@ -21,7 +22,7 @@ class Response
     private $updatedAt;
 
     public function __construct(
-        ResponseId $id,
+        Uuid $id,
         Post $post,
         Author $author,
         Content $content,
@@ -37,7 +38,7 @@ class Response
     }
 
     public static function create(
-        ResponseId $id,
+        Uuid $id,
         Post $post,
         Author $author,
         Content $content
@@ -48,7 +49,7 @@ class Response
         return new self($id, $post, $author, $content, $createdAt, $updatedAt);
     }
 
-    public function id(): ResponseId
+    public function id(): Uuid
     {
         return $this->id;
     }

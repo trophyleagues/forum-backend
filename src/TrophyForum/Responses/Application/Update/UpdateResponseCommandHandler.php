@@ -5,7 +5,7 @@ declare(strict_types = 1);
 namespace TrophyForum\Responses\Application\Update;
 
 use Shared\Domain\ValueObject\Content;
-use TrophyForum\Responses\Domain\ResponseId;
+use Shared\Domain\ValueObject\Uuid;
 
 final class UpdateResponseCommandHandler
 {
@@ -18,7 +18,7 @@ final class UpdateResponseCommandHandler
 
     public function handle(UpdateResponseCommand $command): void
     {
-        $id      = new ResponseId($command->id());
+        $id      = new Uuid($command->id());
         $content = new Content($command->content());
 
         $this->updater->__invoke($id, $content);

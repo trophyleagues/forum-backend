@@ -4,9 +4,9 @@ declare(strict_types = 1);
 
 namespace TrophyForum\SubForums\Application\Find;
 
+use Shared\Domain\ValueObject\Uuid;
 use TrophyForum\Posts\Domain\PostRepository;
 use TrophyForum\SubForums\Domain\SubForum;
-use TrophyForum\SubForums\Domain\SubForumId;
 use TrophyForum\SubForums\Domain\SubForumNotExist;
 use TrophyForum\SubForums\Domain\SubForumRepository;
 
@@ -21,7 +21,7 @@ final class SubForumsFinder
         $this->postRepository = $postRepository;
     }
 
-    public function __invoke(SubForumId $id): SubForum
+    public function __invoke(Uuid $id): SubForum
     {
         $subForum = $this->repository->bySubForumId($id);
 

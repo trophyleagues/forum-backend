@@ -14,7 +14,7 @@ use TrophyForum\SubForums\Application\FindAll\FindAllSubForumsQueryHandler;
 final class FindAllSubForumsQueryHandlerTest extends TestCase
 {
     /** @test */
-    function try_build()
+    function tryBuild(): void
     {
         $handler = new FindAllSubForumsQueryHandler(
             new AllSubForumsFinder(

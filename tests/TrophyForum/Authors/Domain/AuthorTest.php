@@ -22,7 +22,7 @@ final class AuthorTest extends TestCase
     }
 
     /** @test */
-    function tryCreate()
+    function tryCreate(): void
     {
         $stub = AuthorStub::random();
 

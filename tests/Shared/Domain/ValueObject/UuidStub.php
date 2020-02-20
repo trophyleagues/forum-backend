@@ -4,10 +4,17 @@ declare(strict_types = 1);
 
 namespace Tests\Shared\Domain\ValueObject;
 
+use Shared\Domain\ValueObject\Uuid;
+
 final class UuidStub
 {
-    public static function random(): string
+    public static function create(string $uuid): Uuid
     {
-        return StubCreator::random()->unique()->uuid;
+        return new Uuid($uuid);
+    }
+
+    public static function random(): Uuid
+    {
+        return new Uuid(StubCreator::random()->unique()->uuid);
     }
 }

@@ -9,8 +9,8 @@ use GuzzleHttp\Client;
 use Shared\Domain\ValueObject\Country;
 use Shared\Domain\ValueObject\Email;
 use Shared\Domain\ValueObject\Password;
+use Shared\Domain\ValueObject\Uuid;
 use TrophyForum\Users\Domain\User;
-use TrophyForum\Users\Domain\UserId;
 use TrophyForum\Users\Domain\UserRepository;
 use TrophyForum\Users\Domain\UserToken;
 
@@ -41,7 +41,7 @@ final class GuzzleUserRepository implements UserRepository
         $response = json_decode((string) $response->getBody());
 
         return new User(
-            new UserId($response->user_id),
+            new Uuid($response->user_id),
             $email,
             $password,
             new UserToken($response->access_token)

@@ -9,6 +9,7 @@ use Doctrine\ORM\PersistentCollection;
 use Shared\Domain\ValueObject\CreatedAt;
 use Shared\Domain\ValueObject\Slug;
 use Shared\Domain\ValueObject\UpdatedAt;
+use Shared\Domain\ValueObject\Uuid;
 use TrophyForum\Authors\Domain\Author;
 
 class SubForum
@@ -26,7 +27,7 @@ class SubForum
     private $updatedAt;
 
     public function __construct(
-        SubForumId $id,
+        Uuid $id,
         Author $author,
         SubForumName $name,
         SubForumDescription $description,
@@ -52,7 +53,7 @@ class SubForum
     }
 
     public static function create(
-        SubForumId $id,
+        Uuid $id,
         Author $author,
         SubForumName $name,
         SubForumDescription $description,
@@ -76,7 +77,7 @@ class SubForum
         );
     }
 
-    public function id(): SubForumId
+    public function id(): Uuid
     {
         return $this->id;
     }

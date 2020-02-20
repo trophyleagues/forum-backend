@@ -5,29 +5,27 @@ use App\Models\Post;
 use App\Models\Role;
 use App\Models\SubForum;
 use Illuminate\Database\Seeder;
+use Shared\Domain\ValueObject\Uuid;
 use Tests\Shared\Domain\ValueObject\ContentStub;
 use Tests\Shared\Domain\ValueObject\CreatedAtStub;
 use Tests\Shared\Domain\ValueObject\SlugStub;
 use Tests\Shared\Domain\ValueObject\TitleStub;
 use Tests\Shared\Domain\ValueObject\UpdatedAtStub;
+use Tests\Shared\Domain\ValueObject\UuidStub;
 use Tests\TrophyForum\Authors\Domain\AuthorAvatarStub;
-use Tests\TrophyForum\Authors\Domain\AuthorIdStub;
 use Tests\TrophyForum\Authors\Domain\AuthorNameStub;
-use Tests\TrophyForum\Posts\Domain\PostIdStub;
 use Tests\TrophyForum\Posts\Domain\PostIsOpenStub;
-use Tests\TrophyForum\Roles\Domain\RoleIdStub;
 use Tests\TrophyForum\Roles\Domain\RoleNameStub;
 use Tests\TrophyForum\SubForums\Domain\SubForumDescriptionStub;
 use Tests\TrophyForum\SubForums\Domain\SubForumIsAnnounceStub;
 use Tests\TrophyForum\SubForums\Domain\SubForumNameStub;
-use TrophyForum\SubForums\Domain\SubForumId;
 
 final class SubForumsTableSeeder extends Seeder
 {
     public function run(): void
     {
         for ($i = 0; $i < 10; $i++) {
-            $authorId = AuthorIdStub::random()->value();
+            $authorId = UuidStub::random()->value();
 
             Author::create(
                 [
@@ -37,7 +35,7 @@ final class SubForumsTableSeeder extends Seeder
                 ]
             );
 
-            $subForumId = SubForumId::random()->value();
+            $subForumId = Uuid::random()->value();
 
             SubForum::create(
                 [
@@ -53,7 +51,7 @@ final class SubForumsTableSeeder extends Seeder
             );
 
             for ($j = 0; $j < rand(0, 10); $j++) {
-                $authorId = AuthorIdStub::random()->value();
+                $authorId = Uuid::random()->value();
 
                 Author::create(
                     [
@@ -65,7 +63,7 @@ final class SubForumsTableSeeder extends Seeder
 
                 Post::create(
                     [
-                        'id'           => PostIdStub::random()->value(),
+                        'id'           => Uuid::random()->value(),
                         'sub_forum_id' => $subForumId,
                         'author_id'    => $authorId,
                         'title'        => TitleStub::random()->value(),
@@ -80,7 +78,7 @@ final class SubForumsTableSeeder extends Seeder
 
             Role::create(
                 [
-                    'id'        => RoleIdStub::random()->value(),
+                    'id'        => Uuid::random()->value(),
                     'author_id' => $authorId,
                     'name'      => RoleNameStub::random()->value(),
                 ]

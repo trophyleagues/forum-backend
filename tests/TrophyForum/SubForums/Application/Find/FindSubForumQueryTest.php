@@ -4,16 +4,16 @@ declare(strict_types = 1);
 
 namespace Tests\TrophyForum\SubForums\Application\Find;
 
+use Shared\Domain\ValueObject\Uuid;
 use Tests\TestCase;
-use Tests\TrophyForum\SubForums\Domain\SubForumIdStub;
 use TrophyForum\SubForums\Application\Find\FindSubForumQuery;
 
 final class FindSubForumQueryTest extends TestCase
 {
     /** @test */
-    function try_build()
+    function tryBuild(): void
     {
-        $subForumId = SubForumIdStub::random();
+        $subForumId = Uuid::random();
 
         $query = new FindSubForumQuery($subForumId->value());
 

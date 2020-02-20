@@ -4,6 +4,7 @@ declare(strict_types = 1);
 
 namespace TrophyForum\Roles\Domain;
 
+use Shared\Domain\ValueObject\Uuid;
 use TrophyForum\Authors\Domain\Author;
 
 class Role
@@ -12,14 +13,14 @@ class Role
     private $name;
     private $author;
 
-    public function __construct(RoleId $id, RoleName $name, Author $author)
+    public function __construct(Uuid $id, RoleName $name, Author $author)
     {
         $this->id     = $id;
         $this->name   = $name;
         $this->author = $author;
     }
 
-    public function id(): RoleId
+    public function id(): Uuid
     {
         return $this->id;
     }

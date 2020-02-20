@@ -4,7 +4,7 @@ TrophyForum\Authors\Domain\Author:
     repositoryClass: TrophyForum\Authors\Infrastructure\MySqlAuthorRepository
     id:
         id:
-            type: author_id
+            type: uuid
             nullable: false
     fields:
         name:

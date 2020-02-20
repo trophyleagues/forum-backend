@@ -4,7 +4,7 @@ TrophyForum\Roles\Domain\Role:
     repositoryClass: TrophyForum\Roles\Infrastructure\MySqlRoleRepository
     id:
         id:
-            type: role_id
+            type: uuid
             nullable: false
     fields:
         name:

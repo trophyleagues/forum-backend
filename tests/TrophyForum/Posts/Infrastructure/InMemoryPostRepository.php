@@ -4,21 +4,20 @@ declare(strict_types = 1);
 
 namespace Tests\TrophyForum\Posts\Infrastructure;
 
+use Shared\Domain\ValueObject\Uuid;
 use Tests\TrophyForum\Posts\Domain\PostStub;
 use TrophyForum\Posts\Domain\Post;
-use TrophyForum\Posts\Domain\PostId;
 use TrophyForum\Posts\Domain\PostRepository;
 use TrophyForum\Posts\Domain\Posts;
-use TrophyForum\SubForums\Domain\SubForumId;
 
 final class InMemoryPostRepository implements PostRepository
 {
-    public function byId(PostId $id): ?Post
+    public function byId(Uuid $id): ?Post
     {
         return PostStub::withId($id);
     }
 
-    public function bySubForumId(SubForumId $subForumId): ?Posts
+    public function bySubForumId(Uuid $subForumId): ?Posts
     {
         return new Posts(
             [
@@ -31,6 +30,6 @@ final class InMemoryPostRepository implements PostRepository
 
     public function save(Post $post): void
     {
-        // @todo Implement the awesome save() method!!!
+        return;
     }
 }

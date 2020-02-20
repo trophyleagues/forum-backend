@@ -4,8 +4,8 @@ namespace Tests\App\Http\Controllers\SubForums;
 
 use App\Models\Author;
 use App\Models\SubForum;
+use Shared\Domain\ValueObject\Uuid;
 use Tests\TestCase;
-use Tests\TrophyForum\SubForums\Domain\SubForumIdStub;
 
 class GetSubForumControllerTest extends TestCase
 {
@@ -37,7 +37,7 @@ class GetSubForumControllerTest extends TestCase
      */
     public function testBasicFail()
     {
-        $response = $this->get('/api/v1/forum/' . SubForumIdStub::random());
+        $response = $this->get('/api/v1/forum/' . Uuid::random());
 
         $response->assertStatus(404);
         $response->assertJsonStructure(['message']);

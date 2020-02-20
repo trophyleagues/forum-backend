@@ -4,8 +4,8 @@ declare(strict_types = 1);
 
 namespace TrophyForum\Posts\Application\IncreaseVisualizations;
 
+use Shared\Domain\ValueObject\Uuid;
 use TrophyForum\Posts\Application\Find\PostFinder;
-use TrophyForum\Posts\Domain\PostId;
 
 final class IncreaseVisualizationsCommandHandler
 {
@@ -20,7 +20,7 @@ final class IncreaseVisualizationsCommandHandler
 
     public function handle(IncreaseVisualizationsCommand $command): void
     {
-        $postId = new PostId($command->postId());
+        $postId = new Uuid($command->postId());
 
         $this->increaseVisualizations->__invoke($this->finder->__invoke($postId));
     }

@@ -10,7 +10,7 @@ use TrophyForum\Posts\Domain\Post;
 final class PostTest extends TestCase
 {
     /** @test */
-    function try_build()
+    function tryBuild(): void
     {
         $stub = PostStub::random();
 

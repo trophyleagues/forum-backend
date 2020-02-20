@@ -4,7 +4,7 @@ TrophyForum\Responses\Domain\Response:
     repositoryClass: TrophyForum\Responses\Infrastructure\MySqlResponseRepository
     id:
         id:
-            type: response_id
+            type: uuid
             nullable: false
     fields:
         content:

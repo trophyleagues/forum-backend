@@ -6,9 +6,9 @@ namespace TrophyForum\Posts\Application\Create;
 
 use Shared\Domain\ValueObject\Content;
 use Shared\Domain\ValueObject\Title;
+use Shared\Domain\ValueObject\Uuid;
 use TrophyForum\Authors\Domain\Author;
 use TrophyForum\Posts\Domain\Post;
-use TrophyForum\Posts\Domain\PostId;
 use TrophyForum\Posts\Domain\PostRepository;
 use TrophyForum\SubForums\Domain\SubForum;
 
@@ -22,7 +22,7 @@ final class PostCreator
     }
 
     public function __invoke(
-        PostId $id,
+        Uuid $id,
         SubForum $subForum,
         Author $author,
         Title $title,

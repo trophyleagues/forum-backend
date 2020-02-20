@@ -7,18 +7,19 @@ namespace Tests\TrophyForum\Responses\Domain;
 use Shared\Domain\ValueObject\Content;
 use Shared\Domain\ValueObject\CreatedAt;
 use Shared\Domain\ValueObject\UpdatedAt;
+use Shared\Domain\ValueObject\Uuid;
 use Tests\Shared\Domain\ValueObject\ContentStub;
 use Tests\Shared\Domain\ValueObject\CreatedAtStub;
 use Tests\Shared\Domain\ValueObject\UpdatedAtStub;
+use Tests\Shared\Domain\ValueObject\UuidStub;
 use TrophyForum\Authors\Domain\Author;
 use TrophyForum\Posts\Domain\Post;
 use TrophyForum\Responses\Domain\Response;
-use TrophyForum\Responses\Domain\ResponseId;
 
 final class ResponseStub
 {
     public static function create(
-        ResponseId $id,
+        Uuid $id,
         Post $post,
         Author $author,
         Content $content,
@@ -31,7 +32,7 @@ final class ResponseStub
     public static function random(Post $post, Author $author)
     {
         return self::create(
-            ResponseIdStub::random(),
+            UuidStub::random(),
             $post,
             $author,
             ContentStub::random(),

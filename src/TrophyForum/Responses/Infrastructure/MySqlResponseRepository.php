@@ -5,15 +5,14 @@ declare(strict_types = 1);
 namespace TrophyForum\Responses\Infrastructure;
 
 use Doctrine\ORM\EntityRepository;
-use TrophyForum\Posts\Domain\PostId;
+use Shared\Domain\ValueObject\Uuid;
 use TrophyForum\Responses\Domain\Response;
-use TrophyForum\Responses\Domain\ResponseId;
 use TrophyForum\Responses\Domain\ResponseRepository;
 use TrophyForum\Responses\Domain\Responses;
 
 final class MySqlResponseRepository extends EntityRepository implements ResponseRepository
 {
-    public function byId(ResponseId $id): ?Response
+    public function byId(Uuid $id): ?Response
     {
         /** @var Response $response */
         $response = $this->findOneBy(['id' => $id->value()]);
@@ -21,7 +20,7 @@ final class MySqlResponseRepository extends EntityRepository implements Response
         return $response;
     }
 
-    public function byPostId(PostId $postId): ?Responses
+    public function byPostId(Uuid $postId): ?Responses
     {
         $responses = $this->findBy(['post' => $postId->value()]);
 

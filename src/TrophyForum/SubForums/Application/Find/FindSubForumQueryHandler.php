@@ -6,8 +6,8 @@ namespace TrophyForum\SubForums\Application\Find;
 
 use function Lambdish\Phunctional\apply;
 use function Lambdish\Phunctional\pipe;
+use Shared\Domain\ValueObject\Uuid;
 use TrophyForum\SubForums\Application\SubForumResponse;
-use TrophyForum\SubForums\Domain\SubForumId;
 
 final class FindSubForumQueryHandler
 {
@@ -20,7 +20,7 @@ final class FindSubForumQueryHandler
 
     public function handle(FindSubForumQuery $query): array
     {
-        $id = new SubForumId($query->id());
+        $id = new Uuid($query->id());
 
         return apply($this->finder, [$id]);
     }

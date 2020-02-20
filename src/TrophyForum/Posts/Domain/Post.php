@@ -13,6 +13,7 @@ use Shared\Domain\ValueObject\Slug;
 use Shared\Domain\ValueObject\Title;
 use Shared\Domain\ValueObject\UnLike;
 use Shared\Domain\ValueObject\UpdatedAt;
+use Shared\Domain\ValueObject\Uuid;
 use TrophyForum\Authors\Domain\Author;
 use TrophyForum\SubForums\Domain\SubForum;
 
@@ -33,7 +34,7 @@ class Post
     private $updatedAt;
 
     public function __construct(
-        PostId $id,
+        Uuid $id,
         SubForum $subForum,
         Author $author,
         Title $title,
@@ -63,7 +64,7 @@ class Post
     }
 
     public static function create(
-        PostId $id,
+        Uuid $id,
         SubForum $subForum,
         Author $author,
         Title $title,
@@ -94,7 +95,7 @@ class Post
         );
     }
 
-    public function id(): PostId
+    public function id(): Uuid
     {
         return $this->id;
     }

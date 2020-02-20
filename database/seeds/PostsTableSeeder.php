@@ -11,21 +11,18 @@ use Tests\Shared\Domain\ValueObject\SlugStub;
 use Tests\Shared\Domain\ValueObject\TitleStub;
 use Tests\Shared\Domain\ValueObject\UnLikeStub;
 use Tests\Shared\Domain\ValueObject\UpdatedAtStub;
+use Tests\Shared\Domain\ValueObject\UuidStub;
 use Tests\TrophyForum\Authors\Domain\AuthorAvatarStub;
-use Tests\TrophyForum\Authors\Domain\AuthorIdStub;
 use Tests\TrophyForum\Authors\Domain\AuthorNameStub;
-use Tests\TrophyForum\Posts\Domain\PostIdStub;
 use Tests\TrophyForum\Posts\Domain\PostIsOpenStub;
 use Tests\TrophyForum\Posts\Domain\PostVisualizationStub;
-use Tests\TrophyForum\Responses\Domain\ResponseIdStub;
-use Tests\TrophyForum\SubForums\Domain\SubForumIdStub;
 
 final class PostsTableSeeder extends Seeder
 {
     public function run(): void
     {
         for ($i = 0; $i < 100; $i++) {
-            $authorId = AuthorIdStub::random()->value();
+            $authorId = UuidStub::random()->value();
 
             Author::create(
                 [
@@ -35,12 +32,12 @@ final class PostsTableSeeder extends Seeder
                 ]
             );
 
-            $postId = PostIdStub::random()->value();
+            $postId = UuidStub::random()->value();
 
             Post::create(
                 [
                     'id'            => $postId,
-                    'sub_forum_id'  => SubForumIdStub::random()->value(),
+                    'sub_forum_id'  => UuidStub::random()->value(),
                     'author_id'     => $authorId,
                     'title'         => TitleStub::random()->value(),
                     'content'       => ContentStub::random()->value(),
@@ -55,7 +52,7 @@ final class PostsTableSeeder extends Seeder
             );
 
             for ($j = 0; $j < rand(0, 10); $j++) {
-                $authorId = AuthorIdStub::random()->value();
+                $authorId = UuidStub::random()->value();
 
                 Author::create(
                     [
@@ -67,7 +64,7 @@ final class PostsTableSeeder extends Seeder
 
                 Response::create(
                     [
-                        'id'         => ResponseIdStub::random()->value(),
+                        'id'         => UuidStub::random()->value(),
                         'post_id'    => $postId,
                         'author_id'  => $authorId,
                         'content'    => ContentStub::random()->value(),

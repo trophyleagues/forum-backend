@@ -4,9 +4,9 @@ declare(strict_types = 1);
 
 namespace Tests\TrophyForum\SubForums\Infrastructure;
 
+use Shared\Domain\ValueObject\Uuid;
 use Tests\TrophyForum\SubForums\Domain\SubForumStub;
 use TrophyForum\SubForums\Domain\SubForum;
-use TrophyForum\SubForums\Domain\SubForumId;
 use TrophyForum\SubForums\Domain\SubForumRepository;
 use TrophyForum\SubForums\Domain\SubForums;
 
@@ -23,7 +23,7 @@ final class InMemorySubForumRepository implements SubForumRepository
         );
     }
 
-    public function bySubForumId(SubForumId $id): SubForum
+    public function bySubForumId(Uuid $id): SubForum
     {
         return isset($_SESSION['sub_forums'][$id->value()]) ? $_SESSION['sub_forums'][$id->value()] : null;
     }
