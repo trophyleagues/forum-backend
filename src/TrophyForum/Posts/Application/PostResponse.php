@@ -26,6 +26,8 @@ final class PostResponse
             'responses'       => null === $post->responses() ? null : $responses,
             'slug'            => $post->slug()->value(),
             'visualization'   => $post->visualization()->value(),
+            'in_like'         => $post->inLike()->value(),
+            'un_like'         => $post->unLike()->value(),
             'created_at'      => $post->createdAt()->value(),
             'updated_at'      => $post->updatedAt()->value(),
         ];

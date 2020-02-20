@@ -12,7 +12,7 @@ use TrophyForum\SubForums\Domain\SubForum;
 final class SubForumTest extends TestCase
 {
     /** @test */
-    function try_build()
+    function tryBuild(): void
     {
         $stub = SubForumStub::random();
 
@@ -38,7 +38,7 @@ final class SubForumTest extends TestCase
     }
 
     /** @test */
-    function try_create()
+    function tryCreate(): void
     {
         $stub = SubForumStub::random();
 

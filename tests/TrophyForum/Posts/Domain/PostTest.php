@@ -24,6 +24,8 @@ final class PostTest extends TestCase
             $stub->responses(),
             $stub->slug(),
             $stub->visualization(),
+            $stub->inLike(),
+            $stub->unLike(),
             $stub->createdAt(),
             $stub->updatedAt()
         );
@@ -37,6 +39,8 @@ final class PostTest extends TestCase
         $this->assertSame($stub->responses(), $post->responses());
         $this->assertSame($stub->slug()->value(), $post->slug()->value());
         $this->assertSame($stub->visualization()->value(), $post->visualization()->value());
+        $this->assertSame($stub->inLike()->value(), $post->inLike()->value());
+        $this->assertSame($stub->unLike()->value(), $post->unLike()->value());
         $this->assertSame($stub->createdAt()->value(), $post->createdAt()->value());
         $this->assertSame($stub->updatedAt()->value(), $post->updatedAt()->value());
     }

@@ -10,7 +10,7 @@ use TrophyForum\Authors\Domain\Author;
 final class AuthorTest extends TestCase
 {
     /** @test */
-    function try_build()
+    function tryBuild(): void
     {
         $stub = AuthorStub::random();
 
@@ -19,5 +19,19 @@ final class AuthorTest extends TestCase
         $this->assertSame($stub->id()->value(), $author->id()->value());
         $this->assertSame($stub->name()->value(), $author->name()->value());
         $this->assertSame($stub->avatar()->value(), $author->avatar()->value());
+    }
+
+    /** @test */
+    function tryCreate()
+    {
+        $stub = AuthorStub::random();
+
+        $author = Author::create(
+            $stub->id(),
+            $stub->name()
+        );
+
+        $this->assertSame($stub->id()->value(), $author->id()->value());
+        $this->assertSame($stub->name()->value(), $author->name()->value());
     }
 }

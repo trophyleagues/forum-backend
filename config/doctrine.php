@@ -8,9 +8,11 @@ use Shared\Infrastructure\Doctrine\Types\DoctrineDateTimeImmutable;
 use Shared\Infrastructure\Persistence\ContentType;
 use Shared\Infrastructure\Persistence\CreatedAtType;
 use Shared\Infrastructure\Persistence\EmailType;
+use Shared\Infrastructure\Persistence\InLikeType;
 use Shared\Infrastructure\Persistence\PasswordType;
 use Shared\Infrastructure\Persistence\SlugType;
 use Shared\Infrastructure\Persistence\TitleType;
+use Shared\Infrastructure\Persistence\UnLikeType;
 use Shared\Infrastructure\Persistence\UpdatedAtType;
 use TrophyForum\Authors\Infrastructure\Persistence\AuthorAvatarType;
 use TrophyForum\Authors\Infrastructure\Persistence\AuthorIdType;
@@ -167,9 +169,11 @@ return [
         'content'    => ContentType::class,
         'created_at' => CreatedAtType::class,
         'email'      => EmailType::class,
+        'in_like'    => InLikeType::class,
         'password'   => PasswordType::class,
         'slug'       => SlugType::class,
         'title'      => TitleType::class,
+        'un_like'    => UnLikeType::class,
         'updated_at' => UpdatedAtType::class,
     ],
     /*

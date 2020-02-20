@@ -11,6 +11,12 @@ use TrophyForum\Authors\Domain\AuthorRepository;
 
 final class MySqlAuthorRepository extends EntityRepository implements AuthorRepository
 {
+    public function save(Author $author): void
+    {
+        $this->_em->persist($author);
+        $this->_em->flush();
+    }
+
     public function byAuthorId(AuthorId $id): ?Author
     {
         /** @var Author $author */

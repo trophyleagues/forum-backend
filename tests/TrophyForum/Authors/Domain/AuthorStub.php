@@ -16,7 +16,16 @@ final class AuthorStub
         return new Author($id, $name, $avatar);
     }
 
-    public static function random()
+    public static function withId(AuthorId $id): Author
+    {
+        return self::create(
+            $id,
+            AuthorNameStub::random(),
+            AuthorAvatarStub::random()
+        );
+    }
+
+    public static function random(): Author
     {
         return self::create(
             AuthorIdStub::random(),

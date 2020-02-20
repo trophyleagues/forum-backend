@@ -2,20 +2,23 @@
 [![Build Status](https://scrutinizer-ci.com/g/trophyleagues/forum-backend/badges/build.png?b=master)](https://scrutinizer-ci.com/g/trophyleagues/forum-backend/build-status/master)
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/trophyleagues/forum-backend/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/trophyleagues/forum-backend/?branch=master)
 
-Backend in PHP using Laravel. Hexagonal Architecture and Domain-Driven Design (DDD)
+Backend in PHP using Laravel Framework. Hexagonal Architecture and Domain-Driven Design (DDD)
 
 ## Table of Contents
 
-* [Installation](##Installation)
-* [Getting started](##Getting%20started)
-* [Services](##Services)
-  * [Get all subForums](###Get%20all%20subForums)
-  * [Get a subForum by subForumId](###Get%20a%20subForum%20by%20subForumId)
-  * [Get a post by postId](###Get%20a%20post%20by%20postId)
-  * [Create a post](###Create%20a%20post)
-  * [Update a post](###Update%20a%20post)
-  * [Create a response](###Create%20a%20response)
-  * [Update a response](###Update%20a%20response)
+* [Installation](#installation)
+* [Getting started](#getting-started)
+* [Services](#services)
+  * [Create a new user](#create-a-new-user)
+  * [Login a user](#login-a-user)
+  * [Get all subForums](#get-all-subforums)
+  * [Get a subForum by subForumId](#get-a-subforum-by-subforumid)
+  * [Get a post by postId](#get-a-post-by-postid)
+  * [Create a post](#create-a-post)
+  * [Update a post](#update-a-post)
+  * [Create a response](#create-a-response)
+  * [Update a response](#update-a-response)
+  * [Rate a post](#rate-a-post)
 
 ## Installation
 
@@ -73,10 +76,10 @@ Method | Path | Description
 ![GET](public/img/get.png "GET")   | /api/v1/subforum/{subForumId} | Get a subForum by subForumId
 ![GET](public/img/get.png "GET")  | /api/v1/post/{postId} | Get a post by postId
 ![POST](public/img/post.png "POST")  | /api/v1/post | Create a post
-![POST](public/img/put.png "PUT")  | /api/v1/post/{postId} | Update a post
+![PUT](public/img/put.png "PUT")  | /api/v1/post/{postId} | Update a post
 ![POST](public/img/post.png "POST")  | /api/v1/response | Create a response
-![POST](public/img/put.png "PUT")  | /api/v1/response/{responseId} | Update a response
-
+![PUT](public/img/put.png "PUT")  | /api/v1/response/{responseId} | Update a response
+![POST](public/img/post.png "POST")  | /api/v1/post/{postId}/rate | Rate a post
 
 ### Create a new user.
 ![POST](public/img/post.png "POST") api/v1/register
@@ -163,6 +166,8 @@ password  | `string` | Password.
             },
             "is_open": true,
             "total_responses": 78,
+            "visualization": 345,
+            "slug": "who-will-win-the-league",
             "created_at": "2019-04-01 11:15:00",
             "updated_at": "2019-04-01 11:15:00"
         },
@@ -209,6 +214,8 @@ password  | `string` | Password.
         },
         {...}
     ],
+    "visualization": 345,
+    "slug": "who-will-win-the-league",
     "created_at": "2019-04-01 11:15:00",
     "updated_at": "2019-04-01 11:15:00"
 }
@@ -226,11 +233,11 @@ password  | `string` | Password.
 
 Param | Type | Description
 :----------: | :---------- | :----------
-id | uuid | Id of post. Example: 8ad7705f-cddf-35ae-bf8b-acb25a420e86
-sub_forum_id | uuid | SubForum id. Example: b10203df-9911-3c5d-8e2e-de480e9102e8
-author_id | uuid | Author id. Example: dc786f34-0217-3bf6-a20b-4f6b2f7890f8
-title | string | Title of post. Example: My awesome title
-content | string | Content of post. Example: `<h1>This is the content!</h1>`
+id | `uuid` | Id of post. Example: 8ad7705f-cddf-35ae-bf8b-acb25a420e86
+sub_forum_id | `uuid` | SubForum id. Example: b10203df-9911-3c5d-8e2e-de480e9102e8
+author_id | `uuid` | Author id. Example: dc786f34-0217-3bf6-a20b-4f6b2f7890f8
+title | `string` | Title of post. Example: My awesome title
+content | `string` | Content of post. Example: `<h1>This is the content!</h1>`
 
 201 Created
 ```json
@@ -241,8 +248,8 @@ content | string | Content of post. Example: `<h1>This is the content!</h1>`
 
 Param | Type | Description
 :----------: | :---------- | :----------
-title | string | Title of post. Example: My awesome title 2
-content | string | Content of post. Example: `<h1>This is the content 2!</h1>`
+title | `string` | Title of post. Example: My awesome title 2
+content | `string` | Content of post. Example: `<h1>This is the content 2!</h1>`
 
 200 OK
 ```json
@@ -254,10 +261,10 @@ content | string | Content of post. Example: `<h1>This is the content 2!</h1>`
 
 Param | Type | Description
 :----------: | :---------- | :----------
-id | uuid | Id of response. Example: 8ad7705f-cddf-35ae-bf8b-acb25a420e86
-post_id | uuid | Post id. Example: b10203df-9911-3c5d-8e2e-de480e9102e8
-author_id | uuid | Author id. Example: dc786f34-0217-3bf6-a20b-4f6b2f7890f8
-content | string | Content of response. Example: `<p>This is the response!</p>`
+id | `uuid` | Id of response. Example: 8ad7705f-cddf-35ae-bf8b-acb25a420e86
+post_id | `uuid` | Post id. Example: b10203df-9911-3c5d-8e2e-de480e9102e8
+author_id | `uuid` | Author id. Example: dc786f34-0217-3bf6-a20b-4f6b2f7890f8
+content | `string` | Content of response. Example: `<p>This is the response!</p>`
 
 201 Created
 ```json
@@ -268,7 +275,18 @@ content | string | Content of response. Example: `<p>This is the response!</p>`
 
 Param | Type | Description
 :----------: | :---------- | :----------
-content | string | Content of response. Example: `<p>This is the response 2!</p>`
+content | `string` | Content of response. Example: `<p>This is the response 2!</p>`
+
+200 OK
+```json
+```
+
+### Rate a post
+![POST](public/img/post.png "POST") /api/v1/post/{postId}/rate
+
+Param | Type | Description
+:----------: | :---------- | :----------
+rate | `int` | Add a like or unlike. Accepted values: `1` or `-1
 
 200 OK
 ```json

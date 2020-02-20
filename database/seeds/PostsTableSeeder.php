@@ -6,8 +6,10 @@ use App\Models\Response;
 use Illuminate\Database\Seeder;
 use Tests\Shared\Domain\ValueObject\ContentStub;
 use Tests\Shared\Domain\ValueObject\CreatedAtStub;
+use Tests\Shared\Domain\ValueObject\InLikeStub;
 use Tests\Shared\Domain\ValueObject\SlugStub;
 use Tests\Shared\Domain\ValueObject\TitleStub;
+use Tests\Shared\Domain\ValueObject\UnLikeStub;
 use Tests\Shared\Domain\ValueObject\UpdatedAtStub;
 use Tests\TrophyForum\Authors\Domain\AuthorAvatarStub;
 use Tests\TrophyForum\Authors\Domain\AuthorIdStub;
@@ -45,6 +47,8 @@ final class PostsTableSeeder extends Seeder
                     'is_open'       => PostIsOpenStub::random()->value(),
                     'slug'          => SlugStub::random()->value(),
                     'visualization' => PostVisualizationStub::random()->value(),
+                    'in_like'       => InLikeStub::random()->value(),
+                    'un_like'       => UnLikeStub::random()->value(),
                     'created_at'    => CreatedAtStub::random()->value(),
                     'updated_at'    => UpdatedAtStub::random()->value(),
                 ]

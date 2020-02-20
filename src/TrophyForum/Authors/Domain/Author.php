@@ -17,6 +17,13 @@ class Author
         $this->avatar = $avatar;
     }
 
+    public static function create(AuthorId $id, AuthorName $name): Author
+    {
+        $avatar = new AuthorAvatar('');
+
+        return new self($id, $name, $avatar);
+    }
+
     public function id(): AuthorId
     {
         return $this->id;

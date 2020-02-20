@@ -23,6 +23,14 @@ TrophyForum\Posts\Domain\Post:
         visualization:
             type: post_visualization
             nullable: false
+        inLike:
+            type: in_like
+            nullable: false
+            column: in_like
+        unLike:
+            type: un_like
+            nullable: false
+            column: un_like
         createdAt:
             type: created_at
             nullable: false

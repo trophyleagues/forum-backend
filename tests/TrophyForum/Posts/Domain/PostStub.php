@@ -7,13 +7,17 @@ namespace Tests\TrophyForum\Posts\Domain;
 use Doctrine\ORM\PersistentCollection;
 use Shared\Domain\ValueObject\Content;
 use Shared\Domain\ValueObject\CreatedAt;
+use Shared\Domain\ValueObject\InLike;
 use Shared\Domain\ValueObject\Slug;
 use Shared\Domain\ValueObject\Title;
+use Shared\Domain\ValueObject\UnLike;
 use Shared\Domain\ValueObject\UpdatedAt;
 use Tests\Shared\Domain\ValueObject\ContentStub;
 use Tests\Shared\Domain\ValueObject\CreatedAtStub;
+use Tests\Shared\Domain\ValueObject\InLikeStub;
 use Tests\Shared\Domain\ValueObject\SlugStub;
 use Tests\Shared\Domain\ValueObject\TitleStub;
+use Tests\Shared\Domain\ValueObject\UnLikeStub;
 use Tests\Shared\Domain\ValueObject\UpdatedAtStub;
 use Tests\TrophyForum\Authors\Domain\AuthorStub;
 use Tests\TrophyForum\SubForums\Domain\SubForumStub;
@@ -22,7 +26,6 @@ use TrophyForum\Posts\Domain\Post;
 use TrophyForum\Posts\Domain\PostId;
 use TrophyForum\Posts\Domain\PostIsOpen;
 use TrophyForum\Posts\Domain\PostVisualization;
-use TrophyForum\Responses\Domain\Responses;
 use TrophyForum\SubForums\Domain\SubForum;
 
 final class PostStub
@@ -37,10 +40,26 @@ final class PostStub
         PersistentCollection $responses = null,
         Slug $slug,
         PostVisualization $visualization,
+        InLike $inLike,
+        UnLike $unLike,
         CreatedAt $createdAt,
         UpdatedAt $updatedAt
     ): Post {
-        return new Post($id, $subForum, $author, $title, $content, $isOpen, $responses, $slug, $visualization, $createdAt, $updatedAt);
+        return new Post(
+            $id,
+            $subForum,
+            $author,
+            $title,
+            $content,
+            $isOpen,
+            $responses,
+            $slug,
+            $visualization,
+            $inLike,
+            $unLike,
+            $createdAt,
+            $updatedAt
+        );
     }
 
     public static function withId(PostId $id): Post
@@ -55,6 +74,8 @@ final class PostStub
             null,
             SlugStub::random(),
             PostVisualizationStub::random(),
+            InLikeStub::random(),
+            UnLikeStub::random(),
             CreatedAtStub::random(),
             UpdatedAtStub::random()
         );
@@ -72,6 +93,8 @@ final class PostStub
             null,
             SlugStub::random(),
             PostVisualizationStub::random(),
+            InLikeStub::random(),
+            UnLikeStub::random(),
             CreatedAtStub::random(),
             UpdatedAtStub::random()
         );

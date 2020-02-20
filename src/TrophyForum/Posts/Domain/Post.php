@@ -8,8 +8,10 @@ use DateTime;
 use Doctrine\ORM\PersistentCollection;
 use Shared\Domain\ValueObject\Content;
 use Shared\Domain\ValueObject\CreatedAt;
+use Shared\Domain\ValueObject\InLike;
 use Shared\Domain\ValueObject\Slug;
 use Shared\Domain\ValueObject\Title;
+use Shared\Domain\ValueObject\UnLike;
 use Shared\Domain\ValueObject\UpdatedAt;
 use TrophyForum\Authors\Domain\Author;
 use TrophyForum\SubForums\Domain\SubForum;
@@ -25,6 +27,8 @@ class Post
     private $responses;
     private $slug;
     private $visualization;
+    private $inLike;
+    private $unLike;
     private $createdAt;
     private $updatedAt;
 
@@ -38,6 +42,8 @@ class Post
         PersistentCollection $responses = null,
         Slug $slug,
         PostVisualization $visualization,
+        InLike $inLike,
+        UnLike $unLike,
         CreatedAt $createdAt,
         UpdatedAt $updatedAt
     ) {
@@ -50,6 +56,8 @@ class Post
         $this->responses     = $responses;
         $this->slug          = $slug;
         $this->visualization = $visualization;
+        $this->inLike        = $inLike;
+        $this->unLike        = $unLike;
         $this->createdAt     = $createdAt;
         $this->updatedAt     = $updatedAt;
     }
@@ -64,6 +72,8 @@ class Post
         $isOpen        = new PostIsOpen(true);
         $slug          = new Slug($title->value());
         $visualization = new PostVisualization(0);
+        $inLike        = new InLike(0);
+        $unLike        = new UnLike(0);
         $createdAt     = new CreatedAt(new DateTime());
         $updatedAt     = new UpdatedAt(new DateTime());
 
@@ -77,6 +87,8 @@ class Post
             null,
             $slug,
             $visualization,
+            $inLike,
+            $unLike,
             $createdAt,
             $updatedAt
         );
@@ -127,6 +139,16 @@ class Post
         return $this->visualization;
     }
 
+    public function inLike(): InLike
+    {
+        return $this->inLike;
+    }
+
+    public function unLike(): UnLike
+    {
+        return $this->unLike;
+    }
+
     public function createdAt(): CreatedAt
     {
         return $this->createdAt;
@@ -153,5 +175,22 @@ class Post
     {
         $this->visualization = $this->visualization->increase();
         $this->updatedAt     = new UpdatedAt(new DateTime());
+    }
+
+    public function updateRating(string $rating): void
+    {
+        if ($rating !== '-1' && $rating !== '1') {
+            return;
+        }
+
+        if ($rating === '1') {
+            $this->inLike = new InLike($this->inLike()->value() + 1);
+        }
+
+        if ($rating === '-1') {
+            $this->unLike = new UnLike($this->unLike()->value() + 1);
+        }
+
+        $this->updatedAt = new UpdatedAt(new DateTime());
     }
 }
