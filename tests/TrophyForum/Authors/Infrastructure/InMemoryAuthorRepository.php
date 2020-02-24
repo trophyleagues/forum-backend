@@ -7,6 +7,7 @@ namespace Tests\TrophyForum\Authors\Infrastructure;
 use Shared\Domain\ValueObject\Uuid;
 use Tests\TrophyForum\Authors\Domain\AuthorStub;
 use TrophyForum\Authors\Domain\Author;
+use TrophyForum\Authors\Domain\AuthorName;
 use TrophyForum\Authors\Domain\AuthorRepository;
 
 final class InMemoryAuthorRepository implements AuthorRepository
@@ -23,5 +24,14 @@ final class InMemoryAuthorRepository implements AuthorRepository
         }
 
         return AuthorStub::withId($id);
+    }
+
+    public function byName(AuthorName $name): ?Author
+    {
+        if ($name->value() === 'non-existent') {
+            return null;
+        }
+
+        return AuthorStub::withName($name);
     }
 }

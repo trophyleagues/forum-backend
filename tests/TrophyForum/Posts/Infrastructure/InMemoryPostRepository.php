@@ -6,6 +6,7 @@ namespace Tests\TrophyForum\Posts\Infrastructure;
 
 use Shared\Domain\ValueObject\Uuid;
 use Tests\TrophyForum\Posts\Domain\PostStub;
+use TrophyForum\Authors\Domain\Author;
 use TrophyForum\Posts\Domain\Post;
 use TrophyForum\Posts\Domain\PostRepository;
 use TrophyForum\Posts\Domain\Posts;
@@ -31,5 +32,10 @@ final class InMemoryPostRepository implements PostRepository
     public function save(Post $post): void
     {
         return;
+    }
+
+    public function byKeywordAndAuthor(int $page, string $keyword = null, Author $author = null): ?Posts
+    {
+        // @todo Implement the awesome byKeywordAndAuthor() method!!!
     }
 }

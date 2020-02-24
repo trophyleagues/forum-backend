@@ -19,6 +19,7 @@ Backend in PHP using Laravel Framework. Hexagonal Architecture and Domain-Driven
   * [Create a response](#create-a-response)
   * [Update a response](#update-a-response)
   * [Rate a post](#rate-a-post)
+  * [Search](#search)
 
 ## Installation
 
@@ -80,6 +81,7 @@ Method | Path | Description
 ![POST](public/img/post.png "POST")  | /api/v1/response | Create a response
 ![PUT](public/img/put.png "PUT")  | /api/v1/response/{responseId} | Update a response
 ![POST](public/img/post.png "POST")  | /api/v1/post/{postId}/rate | Rate a post
+![GET](public/img/get.png "GET")  | /api/v1/search | Search posts and responses
 
 ### Create a new user.
 ![POST](public/img/post.png "POST") api/v1/register
@@ -290,4 +292,52 @@ rate | `int` | Add a like or unlike. Accepted values: `1` or `-1
 
 200 OK
 ```json
+```
+
+### Search
+![GET](public/img/get.png "GET") /api/v1/search
+
+Param | Type | Description
+:----------: | :---------- | :----------
+keyword | `string` | Keyword
+author | `string` | Author name
+
+200 OK
+```json
+{
+    "posts": [
+        {
+            "id": "08eea5ca-bc6c-4f24-b241-63d1c50eeef6",
+            "title": "My awesome title",
+            "content": "<h1>This is the content!</h1>",
+            "author": {
+                "id": "b01726fd-ad25-3533-badd-fae17bfffa4f",
+                "name": "aut",
+                "avatar": "dolorem"
+            },
+            "is_open": true,
+            "total_responses": 1,
+            "responses": [
+                {
+                    "id": "08eea5ca-bc6c-4f24-b241-63d1c50eeef6",
+                    "author": {
+                        "id": "b01726fd-ad25-3533-badd-fae17bfffa4f",
+                        "name": "aut",
+                        "avatar": "dolorem"
+                    },
+                    "content": "<p>This is the response 2!</p>",
+                    "created_at": "2020-02-24 11:25:28",
+                    "updated_at": "2020-02-24 11:25:28"
+                }
+            ],
+            "slug": "my-awesome-title",
+            "visualization": 4,
+            "in_like": 2,
+            "un_like": 1,
+            "created_at": "2020-02-20 10:55:46",
+            "updated_at": "2020-02-20 10:56:42"
+        }
+    ],
+    "responses": []
+}
 ```

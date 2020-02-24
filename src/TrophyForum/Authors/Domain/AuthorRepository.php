@@ -11,4 +11,6 @@ interface AuthorRepository
     public function save(Author $author): void;
 
     public function byId(Uuid $id): ?Author;
+
+    public function byName(AuthorName $name): ?Author;
 }

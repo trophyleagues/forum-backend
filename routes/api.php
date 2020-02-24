@@ -24,3 +24,5 @@ Route::post('/v1/post/{postId}/rate', 'Posts\RatePostController');
 
 Route::post('/v1/response', 'Responses\CreateResponseController');
 Route::put('/v1/response/{responseId}', 'Responses\UpdateResponseController');
+
+Route::get('/v1/search', 'Search\SearchController');

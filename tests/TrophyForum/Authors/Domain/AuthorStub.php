@@ -26,6 +26,15 @@ final class AuthorStub
         );
     }
 
+    public static function withName(AuthorName $name): Author
+    {
+        return self::create(
+            UuidStub::random(),
+            $name,
+            AuthorAvatarStub::random()
+        );
+    }
+
     public static function random(): Author
     {
         return self::create(
